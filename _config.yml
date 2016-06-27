@@ -1,6 +1,6 @@
 title:            Philogrammer
 tagline:          Coding Philosopher
-description:      Various
+description:      Various Things.
 canonical: http://philogrammer.com
 
 # Owner/author information
@@ -35,10 +35,11 @@ links:
     url: http://coletownsend.com
     external: true
 
+
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/Seoul
 future:      true
-highlighter: pygments
+highlighter: rouge
 markdown:    kramdown
 
 kramdown:
