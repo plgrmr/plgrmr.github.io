@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>foo</title>
+    <description>Foo&#39;s blog...</description>
+    <link>https://dyndna.github.io/lanyon-plus/lanyon-plus/</link>
+    <atom:link href="https://dyndna.github.io/lanyon-plus/lanyon-plus/rfeed.xml" rel="self" type="application/rss+xml" />
+    <updated>2016-06-20T17:19:38+09:00</updated>
+    <id>https://dyndna.github.io/lanyon-plus</id>
+    <author>
+      <name>Foo Boo</name>
+    </author>
+    
+  </channel>
+</rss>
