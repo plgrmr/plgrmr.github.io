@@ -2,14 +2,16 @@
 ---
 
 /* TEAM */
-Primary Contact: foo
-Site: {{ site.url }}/about/
-Twitter: https://twitter.com/{{ site.owner.twitter }}
+Creator: {{ site.owner.name }}
+Contact: {{ site.owner.email }}
+Twitter: {{ site.owner.twitter }}
+Location: {{ site.owner.location }}
+                           
+/* THANKS */                           
+Creator of Balzac theme: Cole Townsend
+Twitter: @twnsndco
 
-/* THANKS */
-Design Contributors: {{ site.url }}/disclosure/
-
-/* SITE */
-Last Updated: {{ site.time | date:"%Y/%m/%d" }}
-Standards: HTML5, CSS3
-Software: Sublime Text, Chrome, Jekyll, Git, Sass
+/* SITE */                         
+Last update: {{ site.time | date: '%F' }}
+Standards: {{ site.tools.standards }}                        
+Software: {{ site.tools.software }}

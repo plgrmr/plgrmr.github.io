@@ -1,12 +1,14 @@
 /* TEAM */
-Primary Contact: foo
-Site: https://dyndna.github.io/lanyon-plus/about/
-Twitter: https://twitter.com/abcd
+Creator: Cole Townsend
+Contact: cole@coletownsend.com
+Twitter: twnsndco
+Location: Buffalo, NY
+                           
+/* THANKS */                           
+Creator of Balzac theme: Cole Townsend
+Twitter: @twnsndco
 
-/* THANKS */
-Design Contributors: https://dyndna.github.io/lanyon-plus/disclosure/
-
-/* SITE */
-Last Updated: 2016/06/20
-Standards: HTML5, CSS3
-Software: Sublime Text, Chrome, Jekyll, Git, Sass
+/* SITE */                         
+Last update: 2016-06-27
+Standards: HTML, SCSS, Jekyll                        
+Software: git

@@ -1,309 +1,185 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<!--  
-====================================================
-Homepage: https://dyndna.github.io/lanyon-plus
-Credits: https://dyndna.github.io/lanyon-plus/disclosure
-====================================================
--->
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-<!-- link href="http://gmpg.org/xfn/11" rel="profile" -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<title>Recent Posts &#8211; Balzac</title>
+<meta name="description" content="">
+<meta name="keywords" content="Jekyll, theme, responsive, blog, template">
 
-<!-- Enable responsiveness on mobile devices-->
-<meta name="HandheldFriendly" content="True">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<title>
-  
-    Personal Homepage of foo boo &middot; foo
-  
-</title>
-
-<!-- Search Engine Optimization -->
-<meta name="description" content="Blogging on ....">
-
-
-
-
-
-<!-- Twitter Cards -->
-  
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@abcd">
-<meta name="twitter:image" content="https://dyndna.github.io/lanyon-plus/images/sitelogo.png">
-
-
-<meta name="twitter:title" content="Personal Homepage of foo boo">
-<meta name="twitter:description" content="Blogging on ....">
-<meta name="twitter:creator" content="@abcd">
-<!-- End Twitter Cards -->
-
-<!-- Open Graph -->
+<!-- DSLs for various open graph languages -->
 <meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Personal Homepage of foo boo">
-<meta property="og:description" content="Blogging on ....">
-<meta property="og:url" content="https://dyndna.github.io/lanyon-plus/index.html">
-<meta property="og:site_name" content="foo">
+<meta property="og:title" content="Recent Posts &#8211; Balzac">
+<meta property="og:description" content="">
+<meta property="og:url" content="/">
+<meta property="og:site_name" content="Balzac">
 
-<meta property="og:image" content="https://dyndna.github.io/lanyon-plus/images/sitelogo.png">
-
-<meta property="fb:app_id" content="1003108156422006">
-<meta property="fb:admins" content="817465054">
-
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400|Tangerine|Inconsolata">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/lanyon-plus/public/css/iconmoon.css">
-
-<!-- CSS -->
-<link rel="stylesheet" href="/lanyon-plus/public/css/style.min.css">
-
-<!-- Add-on CSS to override system-wide defaults -->
-<link rel="stylesheet" href="/lanyon-plus/public/css/addon.css">
-
-<!-- CSS override per page -->
+<meta property="og:image" content="typewriter.jpg">
 
 
-<!-- Java scripts -->
-<!-- <script src="/lanyon-plus/public/js/jquery.min.js"></script> -->
+
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Balzac Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Type -->
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic" rel='stylesheet' type='text/css' />
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/assets/css/entypo.css" media="all">
+
+<!-- In order to use Calendas Plus, you must first purchase it. Then, create a font-face package using FontSquirrel.
+<link rel='stylesheet' href='/assets/cal.css' media='all' />
+-->
+
+
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/i.css">
+
+<!-- Fresh Squeezed jQuery -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="https://dyndna.github.io/lanyon-plus/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="https://dyndna.github.io/lanyon-plus/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="https://dyndna.github.io/lanyon-plus/images/icons/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://dyndna.github.io/lanyon-plus/images/icons/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://dyndna.github.io/lanyon-plus/images/icons/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://dyndna.github.io/lanyon-plus/images/icons/apple-touch-icon-144x144-precomposed.png">
-<!-- 180x180 (precomposed) for iPhone 6 -->
-<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://dyndna.github.io/lanyon-plus/images/icons/apple-touch-icon-180x180.png">
-<!-- 192x192 (precomposed) for Android -->
-<link rel="icon" type="image/png" sizes="192x192"  href="https://dyndna.github.io/lanyon-plus/images/icons/android-icon-192x192.png">
+<link rel="shortcut icon" href="/favicon.ico">
 
-
-<link rel="canonical" href="https://dyndna.github.io/lanyon-plus/">
-<link rel="author" href="https://plus.google.com/+foo?rel=author">
-
-<!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title="RSS" href="https://dyndna.github.io/lanyon-plus/feed.xml">
-
-
-
-</head>
-
-
-<body>
-
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-<!--   <div class="sidebar-item">
-    <p>Foo's blog...</p>
-  </div> -->
-
-  <nav class="sidebar-nav">
-    <!-- a class="sidebar-nav-item" href="/lanyon-plus/">Home</a-->
-
-    
-
-    
-
-    
+<div id="bump">
+  <body class="">
+    <header class="site-header darken">
+      <div class="wrap">
+        <hgroup>
+          <h1><a href="/">Balzac</a></h1>
+        </hgroup>
+        <a href="#nav" class="menu"><span class='icons'>☰</span></a>
+        <nav role="navigation">
+          <ul>
+            <li>
+              <a href="/" title="Balzac">Home</a>
+            </li>
             
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/"><i class="iconside iconm-home"></i> Home</a>
-                
-    
             
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/about/"><i class="iconside iconm-user"></i> About</a>
-                
-    
+                <li><a href="/about" >About</a></li>
             
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/blog/"><i class="iconside iconm-quill"></i> Blog</a>
-                
-    
+                <li><a href="https://github.com/ColeTownsend/Balzac-for-Jekyll" target="_blank">Github</a></li>
             
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/tags/"><i class="fa fa-tags"></i> Tags</a>
-                
-    
+                <li><a href="http://coletownsend.com" target="_blank">Cole Who?</a></li>
             
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/archive/"><i class="fa fa-archive"></i> Archive</a>
-                
-    
-            
-                    <a class="sidebar-nav-item" href="https://foo.wordpress.com" target="_blank"><i class="iconside iconm-wordpress"></i> Old Blog</a>
-                
-    
-            
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/contact/"><i class="iconside iconm-envelop"></i> Contact</a>
-                
-    
-            
-                    <a class="sidebar-nav-item" href="https://twitter.com/abcd" target="_blank"><i class="iconside iconm-twitter"></i> Twitter</a>
-                
-    
-            
-                    <a class="sidebar-nav-item" href="https://dyndna.github.io/lanyon-plus/feed.xml"><i class="iconside iconm-feed2"></i> Feed</a>
-                
-         
 
-    
-    <a class="sidebar-nav-item" href="https://github.com/dyndna/lanyon-plus"><em>lanyon-plus project</em></a>
-    <a class="sidebar-nav-item" href="https://github.com/dyndna/lanyon-plus/releases/tag/v1.1.0">Download v1.1.0</a>
-    
-  </nav>
-
-<hr class="gh">
-
-
-Search box will show up here if Google Custom Search key is set in <code>_config.yml</code>
-
-
-</div>
-
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h3 class="masthead-title">
-            <a href="/lanyon-plus/" title="Home">foo</a>
-            <!-- <small></small> -->
-            <div class="headicons">
-              <small><a href="https://dyndna.github.io/lanyon-plus/about" rel="me" title="About"><i class="iconm iconm-user"></i></a></small>
-              <small><a href="https://dyndna.github.io/lanyon-plus/blog" rel="me" title="Blog"><i class="iconm iconm-quill"></i></a></small>
-              <small><a href="https://dyndna.github.io/lanyon-plus/contact" rel="me" title="Contact"><i class="iconm iconm-envelop"></i></a></small> 
-            </div>           
-          </h3>
-        </div>
+          </ul>
+        </nav>
       </div>
+    </header>
 
-      <div class="container content">
-        <h2 id="lanyon-plushttpsgithubcomdyndnalanyon-plus"><a href="https://github.com/dyndna/lanyon-plus">lanyon-plus</a></h2>
 
-<p>Based on Jekyll theme: <a href="http://lanyon.getpoole.com">Lanyon</a> by <a href="https://github.com/mdo"><strong>Mark Otto</strong></a></p>
-
-<ul>
-  <li>add-ons by <a href="http://sbamin.com">Samir Amin</a></li>
-  <li><a href="https://dyndna.github.io/lanyon-plus/disclosure#i-classfa-fa-thumbs-o-up-credits-for-site-featuresi">Site features</a></li>
-  <li>License: Open sourced under the <a href="http://sbamin.com/disclosure/#theme-major-credit--license">MIT license</a>.</li>
-</ul>
-
-<p>Maximum four posts on front page where first two posts are featured, and remaining are date sorted.</p>
-
-<p>Twitter stream will show up here if <code class="highlighter-rouge">twitter_widget_id</code> is present is <code class="highlighter-rouge">_config.yml</code>. <a href="http://sbamin.com">Demo</a></p>
-
-<div class="posts">
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="https://dyndna.github.io/lanyon-plus/blog/2013/01/01/example_content/">
-        Example content
-      </a>
-    </h1>
-
-  <span class="post-date indexpg" itemprop="datePublished" content="2013-01-01"><i class="fa fa-calendar" title="Date published"> 01 Jan 2013</i> <a href="https://dyndna.github.io/lanyon-plus/featured" title="Featured posts"><i class="social-icons" title="Featured"></i></a></span>
-
- Example content from lanyon. If page description is more than 140 words, it will be shown as post summary on home page and blog index else post excerpt will be shown. Same rule is for html meta description: &gt;140 words in description or first 50 words of posts will be shown as summary. Page excerpt supports markdown formatted summary.
- <a href="https://dyndna.github.io/lanyon-plus/blog/2013/01/01/example_content/" title="Read more"><strong>Read more...</strong></a>
-  </div>
-  <hr class="transp" />
-  
-</div>
-
-<div class="posts">
-  
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="https://dyndna.github.io/lanyon-plus/blog/2015/01/31/whats-jekyll/">
-        What's Jekyll?
-      </a>
-    </h1>
-
-  <span class="post-date indexpg" itemprop="datePublished" content="2015-01-31"><i class="fa fa-calendar" title="Date published"> 31 Jan 2015</i></span>
-
- <a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/mojombo/jekyll/blob/master/README.markdown">the project’s readme</a>:
-
- <a href="https://dyndna.github.io/lanyon-plus/blog/2015/01/31/whats-jekyll/" title="Read more"><strong>Read more...</strong></a>
-  </div>
-  <hr class="transp" />
-  
-  
-  
-  
-</div>
-<h3 class="post-title">
-<div class="pagination" style="margin: 0.5rem;">
-    <a class="pagination-item older" href="https://dyndna.github.io/lanyon-plus/blog"><i class="fa fa-edit"> Blog</i></a>
-    <a class="pagination-item newer" href="https://dyndna.github.io/lanyon-plus/tags"><i class="fa fa-tags"> Tags</i></a>
-</div>
-</h3>
-
-                    <div class="custom-footer" style="display: block;">
-            <div class="footer-social-icons">
-            <ul class="social-icons">
-            
-              
-            <li><a href="https://twitter.com/abcd" rel="me"  target="_blank"  class="social-icons" title="Follow me @foo"> <i class="fa fa-twitter-square fa-2x"></i></a></li>
-            
-              
-            <li><a href="https://plus.google.com/+foo" rel="me"  target="_blank"  class="social-icons" title="Follow me +foo"> <i class="fa fa-google-plus-square fa-2x"></i></a></li>
-            
-              
-            <li><a href="https://github.com/xyz123abc" rel="me"  target="_blank"  class="social-icons" title="Code repository"> <i class="fa fa-github-square fa-2x"></i></a></li>
-            
-              
-            <li><a href="https://dyndna.github.io/lanyon-plus/contact/" rel="me"  class="social-icons" title="Reach Us"> <i class="fa fa-envelope-square fa-2x"></i></a></li>
-            
-              
-            <li><a href="https://dyndna.github.io/lanyon-plus/feed.xml" rel="me"  class="social-icons" title="Subscribe to RSS"> <i class="fa fa-rss-square fa-2x"></i></a></li>
-                      
-            </ul>
-            </div>
-            <h6 class="text-footer"><a rel="license" href="https://dyndna.github.io/lanyon-plus/disclosure/" title="CC BY-NC-SA 4.0 License, link to site disclosure" class="social-icon"><i class="fa fa-creative-commons"></i></a> <a rel="license" href="https://dyndna.github.io/lanyon-plus/disclosure/" title="CC BY-NC-SA 4.0 License, link to site disclosure">2015-2016</a>: <a href="https://dyndna.github.io/lanyon-plus" title="Home">example.com</a> | <a href="https://dyndna.github.io/lanyon-plus/about/" rel="me">About</a></h6>
-            </div>
-
-      </div>
+    <div id='bump'>
+        <section class="article archive">
+          <article class="archive-wrap">
+              <ol class="post-list">
+                 <lh><h2><span class="bb">Recent Posts</span></h2></lh>
+                  
+                  <li>
+                    <div class="deets" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        <h1><a href="/articles/test-post">Test Post</a></h1>
+                        <p class="date"><time datetime="2013-08-17T00:00:00-04:00" itemprop="datePublished">August 17, 2013</time></p>
+                        <p class="">Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schli...</p>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <div class="deets" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        <h1><a href="/articles/the-little-prince">Image in Post</a></h1>
+                        <p class="date"><time datetime="2013-08-05T00:00:00-04:00" itemprop="datePublished">August 05, 2013</time></p>
+                        <p class="">Once when I was six years old I saw a magniﬁcent picture in a book, called True Stories from Nature, about the primev...</p>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <div class="deets" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        <h1><a href="/articles/post-with-figure">Post with Figure</a></h1>
+                        <p class="date"><time datetime="2013-08-05T00:00:00-04:00" itemprop="datePublished">August 05, 2013</time></p>
+                        <p class="">Examples and code for displaying images in posts.</p>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <div class="deets" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        <h1><a href="/articles/post-with-feature">Post and Feature Image</a></h1>
+                        <p class="date"><time datetime="2013-08-05T00:00:00-04:00" itemprop="datePublished">August 05, 2013</time></p>
+                        <p class="">In my younger and more vulnerable years my father gave me some advice that I’ve been turning over in my mind ever since.</p>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <div class="deets" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                        <h1><a href="/articles/longform-post">A Longform Post to Cogitate</a></h1>
+                        <p class="date"><time datetime="2013-08-05T00:00:00-04:00" itemprop="datePublished">August 05, 2013</time></p>
+                        <p class="">Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schli...</p>
+                    </div>
+                  </li>
+                  
+              </ol>
+          </article>
+        </section>
     </div>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+<div class="push"></div>
+  <footer>
+    <aside class="wrap">
+      <ol class="prev-posts">
+        <p class="list-title">Recent Posts</p>
+         <!-- for1 -->
+            <li>
+              <span class="recent-title"><a href="/articles/test-post" title="Test Post">Test Post </a></span>
+              <span class="date">Aug 17, 2013</span>
+            </li>
+         <!-- for1 -->
+            <li>
+              <span class="recent-title"><a href="/articles/the-little-prince" title="Image in Post">Image in Post </a></span>
+              <span class="date">Aug 05, 2013</span>
+            </li>
+         <!-- for1 -->
+            <li>
+              <span class="recent-title"><a href="/articles/post-with-figure" title="Post with Figure">Post with Figure </a></span>
+              <span class="date">Aug 05, 2013</span>
+            </li>
+        
+      </ol>
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
+      <div class="social">
+        <ul>
+            <li><a id="mail" href="mailto:cole@coletownsend.com"><span class="foot-link">Contact Me</span></a></li>
 
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
-    
-
-<!-- gist embed -->
+            
+            <li><a id="twit" href="http://twitter.com/twnsndco" target="_blank"><span class="foot-link">@twnsndco</span></a></li>
+            
 
 
-<!-- disqus comments -->
+            
+            <li><a id="drib" href="http://dribbble.com/coletownsend" target="_blank"><span class="foot-link">Dribbble</span></a></li>
+            
+        </ul>
+    </div>
+    </aside>
+    <small>&copy; 2016 Cole Townsend. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://jekyll.gtat.me/about">Balzac</a> theme.</small>
+  </footer>
+
+  <!-- If they're out, get some from the cellar -->
+  <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="/assets/js/retina.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="/assets/js/scripts.js"></script>
 
 
-</body>
+  </body>
 </html>

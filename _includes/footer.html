@@ -1,15 +1,41 @@
-            <div class="custom-footer" style="display: block;">
-            <div class="footer-social-icons">
-            <ul class="social-icons">
-            {% for social_item in site.data.socialmedia %}
-              {% if social_item.url contains 'http' %}
-              {% assign domain = '' %}
-              {% else %}
-              {% assign domain = site.url %}
+<div class="push"></div>
+  <footer>
+    <aside class="wrap">
+      <ol class="prev-posts">
+        <p class="list-title">Recent Posts</p>
+        {% for post in site.posts | limit:3 %} <!-- for1 -->
+            <li>
+              <span class="recent-title"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title | strip_html | strip_newlines | truncate: 30 }} </a></span>
+              <span class="date">{{post.date | date: "%b %d, %Y" }}</span>
+            </li>
+        {% endfor %}
+      </ol>
+
+      <div class="social">
+        <ul>
+            <li><a id="mail" href="mailto:{{ site.owner.email }}"><span class="foot-link">Contact Me</span></a></li>
+
+            {% if site.owner.twitter %}
+            <li><a id="twit" href="http://twitter.com/{{ site.owner.twitter }}" target="_blank"><span class="foot-link">@{{ site.owner.twitter }}</span></a></li>
             {% endif %}
-            <li><a href="{{ domain }}{{ social_item.url }}" rel="me" {% if social_item.url contains 'http' %} target="_blank" {% endif %} class="social-icons" title="{{ social_item.title }}"> <i class="{{ social_item.class }} fa-2x"></i></a></li>
-            {% endfor %}          
-            </ul>
-            </div>
-            <h6 class="text-footer"><a rel="license" href="{{ site.url }}/disclosure/" title="CC BY-NC-SA 4.0 License, link to site disclosure" class="social-icon"><i class="fa fa-creative-commons"></i></a> <a rel="license" href="{{ site.url }}/disclosure/" title="CC BY-NC-SA 4.0 License, link to site disclosure">2015-{{ site.time | date: '%Y' }}</a>: <a href="{{ site.url }}" title="Home">example.com</a> | <a href="{{ site.url }}/about/" rel="me">About</a></h6>
-            </div>
+
+
+            {% if site.owner.dribbble %}
+            <li><a id="drib" href="http://dribbble.com/{{ site.owner.dribbble }}" target="_blank"><span class="foot-link">Dribbble</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+    </aside>
+    <small>&copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://jekyll.gtat.me/about">Balzac</a> theme.</small>
+  </footer>
+
+  <!-- If they're out, get some from the cellar -->
+  <script>window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="{{ site.url }}/assets/js/retina.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="{{ site.url }}/assets/js/scripts.js"></script>
+
+
+  </body>
+</html>

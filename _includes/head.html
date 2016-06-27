@@ -1,105 +1,66 @@
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-<!-- link href="http://gmpg.org/xfn/11" rel="profile" -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description }}">
+<meta name="keywords" content="{{ page.tags | join: ', ' }}">
 
-<!-- Enable responsiveness on mobile devices-->
+{% include graphs.html %}
+
+<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-  {% if page.title == "Home" %}
-    {{ site.title }} &middot; {{ site.tagline }}
-  {% else %}
-    {{ page.title }} &middot; {{ site.title }}
-  {% endif %}
-</title>
+<!-- Type -->
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic" rel='stylesheet' type='text/css' />
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ site.url }}/assets/css/entypo.css" media="all">
 
-<!-- Search Engine Optimization -->
-<meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.content %}{{ page.content | strip_html | truncatewords: 50 }}{% else %}{{ site.description }}{% endif %}">
-{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
-{% if page.noindex == true %}<meta name="robots" content="noindex">{% endif %}
-{% if page.nofollow == true %}<meta name="robots" content="nofollow">{% endif %}
-{% if site.google_verify %}<meta name="google-site-verification" content="{{ site.google_verify }}">{% endif %}
+<!-- In order to use Calendas Plus, you must first purchase it. Then, create a font-face package using FontSquirrel.
+<link rel='stylesheet' href='{{ site.url }}/assets/cal.css' media='all' />
+-->
 
-{% if site.owner.twitter %}<!-- Twitter Cards -->
-  {% include twitter_card.html %}
-{% endif %}
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.content %}{{ page.content | strip_html | truncatewords: 50 }}{% else %}{{ site.description }}{% endif %}">
-<meta name="twitter:creator" content="@{{ site.owner.twitter }}">
-<!-- End Twitter Cards -->
 
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:description" content="{% if page.description %}{{ page.description }}{% elsif page.content %}{{ page.content | strip_html | truncatewords: 50 }}{% else %}{{ site.description }}{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:site_name" content="{{ site.title }}">
-{% if page.imagefeature %}
-  {% if page.imagefeature contains 'http' %}
-    {% assign domain = '' %}
-  {% else %}
-    {% assign domain = site.urlimg %}
-  {% endif %}
-<meta property="og:image" content="{{ domain }}{{ page.imagefeature }}">{% else %}
-<meta property="og:image" content="{% if page.imagesummary %}{{ site.urlimg }}{{ page.imagesummary }}{% else %}{{ site.urlimg }}{{ site.default_logo }}{% endif %}">{% endif %}
-{% if page.videofeature %}<meta property="og:video" content="{{ page.videofeature }}">{% endif %}
-<meta property="fb:app_id" content="1003108156422006">
-<meta property="fb:admins" content="817465054">
 
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400|Tangerine|Inconsolata">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ site.baseurl }}/public/css/iconmoon.css">
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ site.url }}/assets/css/i.css">
 
-<!-- CSS -->
-<link rel="stylesheet" href="{{ site.baseurl }}/public/css/style.min.css">
-{% if page.category contains 'mypubs' or page.category contains 'myaoi' %} 
-<link rel="stylesheet" href="{{ site.baseurl }}/public/css/publ.css">
-<script src="{{ site.baseurl }}/public/js/jquery.min.js"></script>
-{% endif %}
-<!-- Add-on CSS to override system-wide defaults -->
-<link rel="stylesheet" href="{{ site.baseurl }}/public/css/addon.css">
+<!-- Fresh Squeezed jQuery -->
 
-<!-- CSS override per page -->
-{% if page.style %}
-   <style type="text/css">
-       {{ page.style }}
-   </style>
-{% endif %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-<!-- Java scripts -->
-<!-- <script src="{{ site.baseurl }}/public/js/jquery.min.js"></script> -->
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="{{ site.url }}/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
 
 <!-- Icons -->
 <!-- 16x16 -->
 <link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="{{ site.url }}/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="{{ site.url }}/images/icons/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.url }}/images/icons/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.url }}/images/icons/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.url }}/images/icons/apple-touch-icon-144x144-precomposed.png">
-<!-- 180x180 (precomposed) for iPhone 6 -->
-<link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ site.url }}/images/icons/apple-touch-icon-180x180.png">
-<!-- 192x192 (precomposed) for Android -->
-<link rel="icon" type="image/png" sizes="192x192"  href="{{ site.url }}/images/icons/android-icon-192x192.png">
 
-{% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
-<link rel="canonical" href="{{ canonical }}">
-{% if site.owner.google_plus %}<link rel="author" href="{{ site.owner.google_plus }}?rel=author">{% endif %}
+<div id="bump">
+  <body class="">
+    <header class="site-header">
+      <div class="wrap">
+        <hgroup>
+          <h1><a href="/">{{ site.title }}</a></h1>
+        </hgroup>
+        <a href="#nav" class="menu"><span class='icons'>☰</span></a>
+        <nav role="navigation">
+          <ul>
+            <li>
+              <a href="/" title="{{ site.title }}">Home</a>
+            </li>
+            
+            {% for link in site.links %}
+                <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ site.url }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+            {% endfor %}
 
-<!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.url }}/feed.xml">
-
-{% if page.mathjax %}
-  {% include mathjax_support.html %}
-{% endif %}
-
-</head>
+          </ul>
+        </nav>
+      </div>
+    </header>
