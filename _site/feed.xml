@@ -5,7 +5,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-06-27T18:58:45+09:00</updated>
+<updated>2016-06-27T19:03:47+09:00</updated>
 <id>/</id>
 <author>
   <name>Philogrammer</name>
@@ -85,7 +85,7 @@ grown-ups could see it clearly. They always need to have things explained.&lt;/p
     <uri></uri>
     <email>philogrammer@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;This is a post that uses a &lt;code&gt;figure&lt;/code&gt;. It stacks these images and places a nice little caption below if you fill out &lt;code&gt;figcaption&lt;/code&gt;.&lt;/p&gt;
+  <content type="html">&lt;p&gt;This is a post that uses a &lt;code class=&quot;highlighter-rouge&quot;&gt;figure&lt;/code&gt;. It stacks these images and places a nice little caption below if you fill out &lt;code class=&quot;highlighter-rouge&quot;&gt;figcaption&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;single-image-figure&quot;&gt;Single Image Figure&lt;/h3&gt;
 
@@ -94,10 +94,14 @@ grown-ups could see it clearly. They always need to have things explained.&lt;/p
 	&lt;figcaption&gt;Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/images/image-filename-1.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; 	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these two images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/images/image-filename-1.jpg&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;Caption describing these two images.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
   &lt;p&gt;&lt;a href=&quot;/articles/post-with-figure&quot;&gt;Post with Figure&lt;/a&gt; was originally published by Philogrammer at &lt;a href=&quot;&quot;&gt;Philogrammer&lt;/a&gt; on August 05, 2013.&lt;/p&gt;</content>
 </entry>
