@@ -1,138 +1,103 @@
-# Balzac
+# Kiko Plus Theme
 
-This is forked from [minimal mistakes](http://mademistakes.com). I needed some type of framework to build off as I have no experience with Jekyll. Michael set up an awesome dev environment for this which really helped speed up my progress. He also already wrote up an incredibly comprehensive readme.md so I basically copied all of it and replaced what was necessary. The design itself is my own and I cannot let you sell this or tweak the design for resale, unless I you [contact me](mailto:cole@coletownsend.com).
+![image](/images/image.png)
+
+You can see live demo [here](https://aweekj.github.io/Kiko-plus)
+
+This theme is inspired by [Kiko](http://github.com/gfjaru/Kiko) theme, powered by [Jekyll](http://jekyllrb.com), hosted on [Github Pages](https://pages.github.com).
+
+## Features
+
+- Disqus comment system
+- Google analytics
+- Pagination support
+- Custom tags
+- SEO support
 
 
-If you'd like give me credit somewhere on your blog or tweet a shout out to
-[@twnsndco](https://twitter.com/twnsndco), that would be pretty sweet. 
+## Installation
 
-If you feel like donating — [Give it a thought.](http://gtat.me/balzac/donate)
+#### Method 1: new master's repository (The Best)
 
----
+1. First [fork](https://github.com/AWEEKJ/Kiko-plus/fork) it.
+2. Change your forked repository name _Kiko-plus_ to __USERNAME.github.io__ where
+   __USERNAME__ is your github user name.
+3. Access your new blog via [https://username.github.io](https://username.github.io).
+4. [See configuration](#configuration).
+
+#### Method 2: gh-pages in existing repository
+
+1. Create a new branch called _gh-pages_ in the repository where you want to add a template [managing branches](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/).
+2. From command line run `git clone https://github.com/AWEEKJ/Kiko-plus.git` - this will clone _Kiko-plus_ template to your computer.
+3. Create new branch `git checkout -b gh-pages` where _gh-pages_ will be your branch name.
+4. Add remote, which is your repo from the first step, to your new branch `git remote add gh-pages https://github.com/<yourName>/<yourMaster>/gh-pages`. _yourName_ is your account name and _yourMaster_ is your repository.
+5. Push new branch to remote `git push gh-pages`.
+6. Update `_config.yml` file by changing `baseurl: "<branchName>"` _branchName_ is your branch name where _gh-pages_ resides. See [configuration](#configuration).
+
+#### Method 3: run it locally
+
+1. Download [zip](https://github.com/AWEEKJ/Kiko-plus/archive/master.zip) or clone it `git clone https://github.com/AWEEKJ/Kiko-plus`.
+2. Go inside folder and run `jekyll serve` or `bundle exec jekyll s` or `rake preview`. This will build a website which you can access [https://localhost:4000](https://localhost:4000). You need to have [Jekyll](https://jekyllrb.com/docs/installation/) installed to do this.
 
 
-![Balzac for Jekyll](http://cl.ly/Qdzo/Screen%20Shot%202013-08-05%20at%205.35.11%20PM.jpg)
-![Balzac for Jekyll](http://cl.ly/Qdyh/Screen%20Shot%202013-08-05%20at%205.30.01%20PM.jpg)
+## Configuration
 
-## Features:
-- flexible, uses max-width for responsive goodness
-- responsive drop down menu
-- retina images using @2x
-- post loop in the footer showing 3 latest posts
-- custom portfolio page for case studies
+All configuration is done via `_config.yml` file which you will find in your main repo folder. Change this `<something>` to yours.
 
-## Basic Setup
+- Change this to your blog name.
 
-1. [Install Jekyll](http://jekyllrb.com) if you haven't already.
-2. Download this bad boy.
-3.  Fork the [Balzac repo](http://github.com/coletownsend/balzac-for-jekyll/)
-4. Twerk it out so it's just for you.
-5.  ???
-6.  Profit
-
-## [Preview the Theme](http://jekyll.gtat.me)
-=======
- [Preview the Theme](http://jekyll.gtat.me)
- 
-``` bash
-balzac-for-jekyll/
-├── _includes
-|    ├── footer.html  //site footer
-|    ├── head.html  //site head
-|    ├── head-dark.html  //dark site head for light pages
-├── _layouts
-|    ├── home.html  //homepage layout
-|    ├── page.html  //page layout
-|    ├── post-index.html  //post listing layout
-|    └── post.html  //post layout
-|    ├── post-no-feature.html  //feature image-less post layout
-├── _posts
-├── assets
-|    ├── css  //preprocessed less styles. good idea to minify
-|    ├── img  //images and graphics used in css and js
-|    ├── js
-|    |   ├── main.js  //jQuery plugins and settings
-|    |   └── vendor  //all 3rd party scripts
-|    └── sass 
-├── images  //images for posts and pages
-├── about.md  //about page
-├── articles.md  //lists all posts from latest to oldest
-└── index.md  //homepage. lists 5 most recent posts
+```yml
+name: <blog-name>
 ```
 
-# Customization
+- Change this to your domain. **NOTE**- if running locally change this to `url: "https://localhost:4000"`.
 
-## _config.yml
-
-Most of the variables found here are used in the .html files found in `_includes` if you need to add or remove anything. A good place to start would be to change the title, tagline, description, and url of your site. When working locally comment out `url` or else you will get a bunch of broken links because they are absolute and prefixed with `{{ site.url }}` in the various `_includes` and `_layouts`. Just remember to uncomment `url` when building for deployment or pushing to **gh-pages**...
-
-### Owner/Author Information
-
-Change your name, bio, Twitter url, email, Dribbble URL, etc.
-
-
-### Top Navigation Links
-
-Edit page/post titles and URLs to include in the site's navigation. For external links add `external: true`.
-
-``` yaml
-# sample top navigation links
-links:
-  - title: About Page
-    url: /about
-  - title: Other Page
-    url: /other-page
-  - title: External Page
-    url: http://coletownsend.com
-    external: true
+```yml
+url: "https://<your-name>.github.io"
 ```
 
-## Other Stuff
+- Change this to your branch name where _gh-pages_ resides. !NOTE apply only if you used __Method 2__ for installation.
 
-The rest is just your average Jekyll config settings. Nothing too crazy here...
-
-### _includes
-
-For the most part you can leave these as is since the author/owner details are pulled from `_config.yml`. That said you'll probably want to customize the copyright stuff in `footer.html` to your liking.
-
-### Adding Posts and Pages
-
-There are two main content layouts: `post.html` (for posts) and `page.html` (for pages). Both have large **feature images** that span the full-width of the screen, and both are meant for text heavy blog posts (or articles). 
-
-### Feature Images
-
-A good rule of thumb is to keep feature images nice and wide so you don't push the body text too far down. An image cropped around around 1024 x 256 pixels will keep file size down with an acceptable resolution for most devices. 
-
-``` yaml
-image:
-# local image 
-  feature: feature-image-filename.jpg
-# link image
-  feature: "http(s)://image.domain.com/feature-image-filename.jpg"
+```yml
+baseurl: "/<branch-name>"
 ```
 
-This makes the assumption that the feature image is in the *images* folder unless it has a link address. To add a feature image to a post or page just include the filename in the front matter like so.
-You can "serve" images responsively with retina.js. All you need to do is have a file with @2x before the file type. That should be placed in the *images* folder. You literally don't have to do anything other than that. 2 copies. One is linked. That's it.
-Ex:
-`cool-photo@2x.jpg` 
+- These configuration in `author:` is for links to icons in footer. Modify `_includes/footer.html` to add more link icons.
 
-**There is a default feature image that will show up for and posts. It isn't retina or anything. It's just there in case you want one but forget <3*
-
-#### If you don't want a feature image
-…just say so in the front-matter. Go to your-post-name.md and make sure it has this guy up top.
+```yml
+author:
+  name:             your-name
+  facebook:         your-id
+  twitter:          your-id
+  github:           your-id
+  linkedin:         your-id
+  medium:           your-id
+  tumblr:           your-id
+  email:            your-id@your-email.com
 ```
-layout: post-no-feature
+
+- Change this to your Google Analytic ID.
+
+```yml
+google-analytics:
+  id:               your-id
 ```
 
-### Categories
+- Change this to your Disqus ID.
 
-In the sample `_posts` folder you may have noticed `category: articles` in the front matter. I like keeping all posts grouped in the same folder. If you decide to rename or add categories you will need to modify the permalink in `articles.md` along with the filename (if renaming).
+```yml
+disqus:
+  id:               your-id
+```
 
-For example. Say you want to group all your posts under `blog/` instead of `articles/`. In your post add `category: blog` to the front matter, rename or duplicate `articles.md` to `blog.md` and change the permalink in that file to `permalink: /blog/index.html`.
+## Rakefile Usage
 
-If done correctly `/blog` should be a page listing all the site's posts.
-
+```bash
+$ rake post title="A Title" [date="2015-08-16"] [tags=[tag1,tag2]]
+$ rake draft title="A Title" [date="2015-08-16"] [tags=[tag1,tag2]]
+$ rake preview
+```
 
 ## License
 
-This is free to use, fork, do whatever you want. Please *do not* sell this design though. You don't need to link me to it, but please contact me if you intend to market this theme. I am releasing premium versions of this design for select CMS's. 
+This theme is released under MIT License.
