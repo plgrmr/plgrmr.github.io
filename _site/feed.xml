@@ -83,19 +83,19 @@
 
 &lt;h2 id=&quot;section-2&quot;&gt;따라하기만 하면 되는 패키지 만들기&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;./img/1.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/1.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;RStudio 에서 File -&amp;gt; New Project 를 누릅니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/2.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/2.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;새로운 폴더를 만들 것이므로 New Directory 로 갑니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/3.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/3.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;R Project 를 클릭하여 새로운 프로젝트를 만듭니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/4.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/4.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Type 은 Package, Package name 은 내가 만들 package의 이름&lt;/p&gt;
 
@@ -103,7 +103,7 @@
 
 &lt;p&gt;create project 버튼을 누릅니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/5.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/5.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Package 가 완성되었습니다.&lt;/p&gt;
 
@@ -111,7 +111,7 @@
 
 &lt;h2 id=&quot;section-3&quot;&gt;패키지 구성요소 파일과 폴더구조&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/6.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/6.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;RStudio를 이용하여 패키지를 생성하면 위와 같은 파일들이 나옵니다.&lt;/p&gt;
 
@@ -119,7 +119,7 @@
 
 &lt;p&gt;&lt;strong&gt;DESCRIPTION 파일&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/7.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/7.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Description 파일을 열어보면 Package 의 정보가 한눈에 요약되어있습니다.&lt;/p&gt;
 
@@ -133,7 +133,7 @@
 
 &lt;p&gt;&lt;strong&gt;man 폴더&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/8.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/8.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Man 폴더는 Manual 즉 패키지 안에 들어있는 모든 함수들의 설명서 입니다.&lt;/p&gt;
 
@@ -141,7 +141,7 @@
 
 &lt;p&gt;&lt;strong&gt;R 폴더&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/r/project/testpackage/img/9.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/figure/source/draft/img/9.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;R 폴더에는 패키지에 사용되는 모든 함수들의 소스코드가 저장됩니다.&lt;/p&gt;
 
@@ -166,7 +166,7 @@
 &lt;p&gt;내 라이브러리 내의 파일 주소와 결합하면 됩니다.&lt;/p&gt;
 
 &lt;p&gt;##배포
-&lt;img src=&quot;/r/project/testpackage/img/10.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/figure/source/draft/img/10.png&quot; width=&quot;500&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;배포는 Build 메뉴에 Build Source 패키지를 누르면 자동으로 해당 폴더에&lt;/p&gt;
 
