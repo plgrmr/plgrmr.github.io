@@ -2,8 +2,105 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>Philogrammer</title>
-		<link>http://philogrammer.com</link>
-		<atom:link href="http://philogrammer.com/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>path</title>
+        <description>&lt;p&gt;R과 다른 언어, 프로그램의 패키지를 쓰다보면&lt;/p&gt;
+
+&lt;p&gt;예상치 못하게 에러가 뜨는 경우가 생깁니다.&lt;/p&gt;
+
+&lt;p&gt;이에는 다양한 원인이 있을 수도 있겠지만&lt;/p&gt;
+
+&lt;p&gt;PATH 환경변수 설정이 다르게 되어있어 에러가 뜨는 경우가&lt;/p&gt;
+
+&lt;p&gt;빈번하게 있습니다.&lt;/p&gt;
+
+&lt;p&gt;저 같은 경우에는 블로그 세팅시 Knitr 와 Jekyll 을 이용하여&lt;/p&gt;
+
+&lt;p&gt;마크다운을 실제 Static 페이지로 바꾸어줄때 Ruby 를 사용하는데&lt;/p&gt;
+
+&lt;p&gt;이 경우 RStudio 안에서 Servr 패키지의 Jekyll 명령어를 사용 시&lt;/p&gt;
+
+&lt;p&gt;Terminal 상의 PATH 변수와 RStudio 내의 PATH 변수가 달라&lt;/p&gt;
+
+&lt;p&gt;RStudio Console 내에서의 Ruby가 제대로 작동하지 않는 문제가 있었습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./path.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sys.getenv(‘PATH’)&lt;/p&gt;
+
+&lt;p&gt;RStudio Console 내에서 쳐보면 OS기본의 PATH 가 설정되있는 것을&lt;/p&gt;
+
+&lt;p&gt;확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;반면 우측에 터미널창 에서 r에 들어가 PATH를 확인해 보면&lt;/p&gt;
+
+&lt;p&gt;ruby의 PATH 가 반영이 되어있는 것을 확인 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;이를 변경하는 것은 간단합니다.&lt;/p&gt;
+
+&lt;p&gt;r 이 구동될 때 PATH 를 받아들이는 .Renviron 이라는 파일에&lt;/p&gt;
+
+&lt;p&gt;PATH를 심어주면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;#Step 1&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./1.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd ~ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;명령어로 가장 최상단 디렉토리에 접근합니다.&lt;/p&gt;
+
+&lt;p&gt;#Step 2&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./2.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;vi 편집기를 이용하여 Renviron 파일을 만들기 위해&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vi .Renviron 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;을 칩니다.&lt;/p&gt;
+
+&lt;p&gt;#Step 3&lt;/p&gt;
+
+&lt;p&gt;자신의 개발환경에 맞는 PATH 값을 입력해주세요&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/Philogrammer1/.rvm/gems/ruby-2.3.0/bin:
+/Users/Philogrammer1/.rvm/gems/ruby-2.3.0@global/bin:
+/Users/Philogrammer1/.rvm/rubies/ruby-2.3.0/bin:
+/opt/local/bin:
+/opt/local/sbin:
+/usr/local/bin:
+/usr/bin:
+/bin:
+/usr/sbin:
+/sbin:
+/Users/Philogrammer1/.rvm/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;i 는 insert
+:wq 는 저장하고 나가기입니다.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;vi 에디터에서 PATH를 저장하고 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./3.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;바뀐 환경값을 찾을 수 있습니다.&lt;/p&gt;
+
+</description>
+				<pubDate>Sat, 19 Nov 2016 14:20:22 +0900</pubDate>
+				<link>http://localhost:4000/2016-11-19/path/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016-11-19/path/</guid>
+			</item>
 		
 			<item>
 				<title>패키지 만들기</title>
@@ -173,8 +270,8 @@
 &lt;p&gt;패키지를 만들어 주게 됩니다.&lt;/p&gt;
 </description>
 				<pubDate>Fri, 11 Nov 2016 00:00:00 +0900</pubDate>
-				<link>http://philogrammer.com/2016-11-11/draft/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2016-11-11/draft/</guid>
+				<link>http://localhost:4000/2016-11-11/draft/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016-11-11/draft/</guid>
 			</item>
 		
 			<item>
@@ -313,8 +410,8 @@
 &lt;/div&gt;
 </description>
 				<pubDate>Mon, 15 Aug 2016 00:00:00 +0900</pubDate>
-				<link>http://philogrammer.com/2016-08-15/style-test/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2016-08-15/style-test/</guid>
+				<link>http://localhost:4000/2016-08-15/style-test/</link>
+				<guid isPermaLink="true">http://localhost:4000/2016-08-15/style-test/</guid>
 			</item>
 		
 			<item>
@@ -392,8 +489,8 @@
 &lt;/div&gt;
 </description>
 				<pubDate>Fri, 16 Aug 2013 00:00:00 +0900</pubDate>
-				<link>http://philogrammer.com/2013-08-16/code-highlighting-post/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2013-08-16/code-highlighting-post/</guid>
+				<link>http://localhost:4000/2013-08-16/code-highlighting-post/</link>
+				<guid isPermaLink="true">http://localhost:4000/2013-08-16/code-highlighting-post/</guid>
 			</item>
 		
 			<item>
@@ -401,8 +498,8 @@
         <description>
 </description>
 				<pubDate>Mon, 12 Aug 2013 00:00:00 +0900</pubDate>
-				<link>http://philogrammer.com/2013-08-12/sample-link-post/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2013-08-12/sample-link-post/</guid>
+				<link>http://localhost:4000/2013-08-12/sample-link-post/</link>
+				<guid isPermaLink="true">http://localhost:4000/2013-08-12/sample-link-post/</guid>
 			</item>
 		
 			<item>
@@ -449,8 +546,8 @@
 &lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 22 May 2012 00:00:00 +0900</pubDate>
-				<link>http://philogrammer.com/2012-05-22/readability-post/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2012-05-22/readability-post/</guid>
+				<link>http://localhost:4000/2012-05-22/readability-post/</link>
+				<guid isPermaLink="true">http://localhost:4000/2012-05-22/readability-post/</guid>
 			</item>
 		
 	</channel>
