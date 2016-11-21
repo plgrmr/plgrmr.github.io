@@ -2,8 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>Philogrammer</title>
-		<link>http://localhost:4000</link>
-		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		<link>http://philogrammer.com</link>
+		<atom:link href="http://philogrammer.com/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>please</title>
+        <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/please/2016-11-21-please/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;hihi&lt;/p&gt;
+
+&lt;p&gt;hihi&lt;/p&gt;
+</description>
+				<pubDate>Mon, 21 Nov 2016 15:43:11 +0900</pubDate>
+				<link>http://philogrammer.com/2016-11-21/please/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-21/please/</guid>
+			</item>
 		
 			<item>
 				<title>path</title>
@@ -98,8 +117,8 @@
 
 </description>
 				<pubDate>Sat, 19 Nov 2016 14:20:22 +0900</pubDate>
-				<link>http://localhost:4000/2016-11-19/path/</link>
-				<guid isPermaLink="true">http://localhost:4000/2016-11-19/path/</guid>
+				<link>http://philogrammer.com/2016-11-19/path/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-19/path/</guid>
 			</item>
 		
 			<item>
@@ -270,8 +289,8 @@
 &lt;p&gt;패키지를 만들어 주게 됩니다.&lt;/p&gt;
 </description>
 				<pubDate>Fri, 11 Nov 2016 00:00:00 +0900</pubDate>
-				<link>http://localhost:4000/2016-11-11/draft/</link>
-				<guid isPermaLink="true">http://localhost:4000/2016-11-11/draft/</guid>
+				<link>http://philogrammer.com/2016-11-11/draft/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-11/draft/</guid>
 			</item>
 		
 			<item>
@@ -410,8 +429,8 @@
 &lt;/div&gt;
 </description>
 				<pubDate>Mon, 15 Aug 2016 00:00:00 +0900</pubDate>
-				<link>http://localhost:4000/2016-08-15/style-test/</link>
-				<guid isPermaLink="true">http://localhost:4000/2016-08-15/style-test/</guid>
+				<link>http://philogrammer.com/2016-08-15/style-test/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-08-15/style-test/</guid>
 			</item>
 		
 			<item>
@@ -489,8 +508,8 @@
 &lt;/div&gt;
 </description>
 				<pubDate>Fri, 16 Aug 2013 00:00:00 +0900</pubDate>
-				<link>http://localhost:4000/2013-08-16/code-highlighting-post/</link>
-				<guid isPermaLink="true">http://localhost:4000/2013-08-16/code-highlighting-post/</guid>
+				<link>http://philogrammer.com/2013-08-16/code-highlighting-post/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2013-08-16/code-highlighting-post/</guid>
 			</item>
 		
 			<item>
@@ -498,8 +517,8 @@
         <description>
 </description>
 				<pubDate>Mon, 12 Aug 2013 00:00:00 +0900</pubDate>
-				<link>http://localhost:4000/2013-08-12/sample-link-post/</link>
-				<guid isPermaLink="true">http://localhost:4000/2013-08-12/sample-link-post/</guid>
+				<link>http://philogrammer.com/2013-08-12/sample-link-post/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2013-08-12/sample-link-post/</guid>
 			</item>
 		
 			<item>
@@ -546,8 +565,8 @@
 &lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 22 May 2012 00:00:00 +0900</pubDate>
-				<link>http://localhost:4000/2012-05-22/readability-post/</link>
-				<guid isPermaLink="true">http://localhost:4000/2012-05-22/readability-post/</guid>
+				<link>http://philogrammer.com/2012-05-22/readability-post/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2012-05-22/readability-post/</guid>
 			</item>
 		
 	</channel>
