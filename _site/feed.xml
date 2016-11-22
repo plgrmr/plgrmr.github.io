@@ -6,6 +6,41 @@
 		<atom:link href="http://philogrammer.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Review</title>
+        <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/review/2016-11-22-review/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/review/2016-11-22-review/1.jpg&quot; alt=&quot;woowookkakka&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Tue, 22 Nov 2016 15:13:54 +0900</pubDate>
+				<link>http://philogrammer.com/2016-11-22/review/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-22/review/</guid>
+			</item>
+		
+			<item>
+				<title>image test</title>
+        <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/image-test/2016-11-22-image-test/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/figure/source/image-test/2016-11-22-image-test/1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 22 Nov 2016 14:54:03 +0900</pubDate>
+				<link>http://philogrammer.com/2016-11-22/image-test/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-22/image-test/</guid>
+			</item>
+		
+			<item>
 				<title>please</title>
         <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
 
@@ -18,10 +53,11 @@
 &lt;p&gt;hihi&lt;/p&gt;
 
 &lt;p&gt;hihi&lt;/p&gt;
+
 </description>
-				<pubDate>Mon, 21 Nov 2016 15:43:11 +0900</pubDate>
-				<link>http://philogrammer.com/2016-11-21/please/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2016-11-21/please/</guid>
+				<pubDate>Tue, 22 Nov 2016 12:59:11 +0900</pubDate>
+				<link>http://philogrammer.com/2016-11-22/please/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2016-11-22/please/</guid>
 			</item>
 		
 			<item>
