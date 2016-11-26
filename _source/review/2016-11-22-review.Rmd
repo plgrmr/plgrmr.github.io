@@ -6,10 +6,27 @@ published: true
 tags: [Review, IT Products]
 ---
 
-Your markdown here!
-
-```{r}
-plot(1:10)
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+    echo    = FALSE,
+    warning = FALSE,
+    error   = FALSE,
+    message = FALSE,
+    device  = 'png',
+    fig.height = 6,
+    fig.width  = 6,
+    dpi = 300
+  )
 ```
 
+Blog posting test
+
 ![woowookkakka](/figure/source/review/2016-11-22-review/1.jpg)
+
+![woowookkakka](./1.png)
+
+
+하하하
+
+<iframe width="420" height="315" src="http://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
