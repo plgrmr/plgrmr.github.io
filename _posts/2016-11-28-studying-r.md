@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  데이터 나누고 바꾸고 붙이기
-date: "2016-11-28 21:04:08"
+date: "2016-11-28 21:42:02"
 published: true
 tags: [data-science, apply]
 ---
@@ -131,8 +131,35 @@ lapply(theList, sum)
 
 ### sapply
 
-* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 
+* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 결과값 반환이 vector 로 된다는 차이점이 있습니다.
 
+
+```r
+sapply(theList, sum)
+```
+
+```
+##  A  B  C  D 
+## 45 15 10  2
+```
+
+```r
+# 기술적으로 vector 는 list 이기 때문에 lapply, sapply 둘다 입력값으로 vector 를 취할 수 있습니다.
+
+theNames <- c("AAA", "BBBBBB", "CCCCCCCC")
+lapply(theNames, nchar)
+```
+
+```
+## [[1]]
+## [1] 3
+## 
+## [[2]]
+## [1] 6
+## 
+## [[3]]
+## [1] 8
+```
 
 
 

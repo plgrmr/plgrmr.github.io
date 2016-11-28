@@ -66,8 +66,19 @@ lapply(theList, sum)
 
 ### sapply
 
-* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 
+* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 결과값 반환이 vector 로 된다는 차이점이 있습니다.
 
+```{r}
+
+sapply(theList, sum)
+
+# 기술적으로 vector 는 list 이기 때문에 lapply, sapply 둘다 입력값으로 vector 를 취할 수 있습니다.
+
+theNames <- c("AAA", "BBBBBB", "CCCCCCCC")
+lapply(theNames, nchar)
+
+
+```
 
 
 
