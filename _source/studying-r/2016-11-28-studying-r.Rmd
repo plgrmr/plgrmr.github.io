@@ -1,20 +1,21 @@
 ---
 layout: post
-title:  데이터 나누고 바꾸고 붙이기
+title:  데이터 나누고 바꾸고 붙이기 1탄 Apply
 date: "`r Sys.time()`"
 published: true
 tags: [data-science, apply]
+description: 데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다.
 ---
 
 R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 `apply` 친구들을 마주쳤을 때입니다.
 
 열공해보도록 합시다. 
 
-## Apply 패밀리
+## apply 패밀리
 
 R에는 다양한 Apply 들이 있습니다. `tapply`, `lapply`, `mapply` 와 같은 관련 함수들이 내장되어 있다고 합니다.
 
-### Apply
+### apply
 
 - `apply` 는 Matrix에 대해서만 사용될 수 있습니다. 이는 모든 원소가 Character, numeric, logical 중 어느 것이든지 같은 형이어야만 합니다. 
 
@@ -66,8 +67,19 @@ lapply(theList, sum)
 
 ### sapply
 
-* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 
+* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 결과값 반환이 vector 로 된다는 차이점이 있습니다.
 
+```{r}
+
+sapply(theList, sum)
+
+# 기술적으로 vector 는 list 이기 때문에 lapply, sapply 둘다 입력값으로 vector 를 취할 수 있습니다.
+
+theNames <- c("AAA", "BBBBBB", "CCCCCCCC")
+lapply(theNames, nchar)
+
+
+```
 
 
 

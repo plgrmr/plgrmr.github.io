@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>데이터 나누고 바꾸고 붙이기</title>
+  <title>데이터 나누고 바꾸고 붙이기 1탄 Apply</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
@@ -15,21 +15,21 @@
 
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>데이터 나누고 바꾸고 붙이기 - Philogrammer</title>
-<meta property="og:title" content="데이터 나누고 바꾸고 붙이기" />
-<meta name="description" content="R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 apply 친구들을 마주쳤을 때입니다." />
-<meta property="og:description" content="R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 apply 친구들을 마주쳤을 때입니다." />
+<title>데이터 나누고 바꾸고 붙이기 1탄 Apply - Philogrammer</title>
+<meta property="og:title" content="데이터 나누고 바꾸고 붙이기 1탄 Apply" />
+<meta name="description" content="데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다." />
+<meta property="og:description" content="데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다." />
 <link rel="canonical" href="http://philogrammer.com/2016-11-28/studying-r/" />
 <meta property="og:url" content="http://philogrammer.com/2016-11-28/studying-r/" />
 <meta property="og:site_name" content="Philogrammer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-28T21:04:08+09:00" />
+<meta property="article:published_time" content="2016-11-28T21:43:41+09:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "데이터 나누고 바꾸고 붙이기",
-"datePublished": "2016-11-28T21:04:08+09:00",
-"description": "R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 apply 친구들을 마주쳤을 때입니다.",
+"headline": "데이터 나누고 바꾸고 붙이기 1탄 Apply",
+"datePublished": "2016-11-28T21:43:41+09:00",
+"description": "데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다.",
 "url": "http://philogrammer.com/2016-11-28/studying-r/"}</script>
 <!-- End Jekyll SEO tag -->
 
@@ -60,7 +60,7 @@ ga('send', 'pageview');
   </h1>
 </header>
 <div class="post">
-  <h1 class="post-title">데이터 나누고 바꾸고 붙이기</h1>
+  <h1 class="post-title">데이터 나누고 바꾸고 붙이기 1탄 Apply</h1>
   <span class="post-date">
     <time>28 Nov 2016</time>
   </span>
@@ -88,11 +88,11 @@ ga('send', 'pageview');
 
 <p>열공해보도록 합시다.</p>
 
-<h2 id="apply-">Apply 패밀리</h2>
+<h2 id="apply-">apply 패밀리</h2>
 
 <p>R에는 다양한 Apply 들이 있습니다. <code class="highlighter-rouge">tapply</code>, <code class="highlighter-rouge">lapply</code>, <code class="highlighter-rouge">mapply</code> 와 같은 관련 함수들이 내장되어 있다고 합니다.</p>
 
-<h3 id="apply">Apply</h3>
+<h3 id="apply">apply</h3>
 
 <ul>
   <li>
@@ -216,8 +216,35 @@ ga('send', 'pageview');
 <h3 id="sapply">sapply</h3>
 
 <ul>
-  <li><code class="highlighter-rouge">sapply</code> 는 lapply 와 기능면에서 모든 것이 동일하며</li>
+  <li><code class="highlighter-rouge">sapply</code> 는 lapply 와 기능면에서 모든 것이 동일하며 결과값 반환이 vector 로 된다는 차이점이 있습니다.</li>
 </ul>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">sapply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  A  B  C  D 
+## 45 15 10  2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 기술적으로 vector 는 list 이기 때문에 lapply, sapply 둘다 입력값으로 vector 를 취할 수 있습니다.
+</span><span class="w">
+</span><span class="n">theNames</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"AAA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"BBBBBB"</span><span class="p">,</span><span class="w"> </span><span class="s2">"CCCCCCCC"</span><span class="p">)</span><span class="w">
+</span><span class="n">lapply</span><span class="p">(</span><span class="n">theNames</span><span class="p">,</span><span class="w"> </span><span class="n">nchar</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [[1]]
+## [1] 3
+## 
+## [[2]]
+## [1] 6
+## 
+## [[3]]
+## [1] 8
+</code></pre>
+</div>
 
 
 
@@ -229,13 +256,13 @@ ga('send', 'pageview');
     <span>Share this: <br /></span>
 <a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
-<a href="https://twitter.com/intent/tweet?text=데이터 나누고 바꾸고 붙이기&url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
+<a href="https://twitter.com/intent/tweet?text=데이터 나누고 바꾸고 붙이기 1탄 Apply&url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
 <a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
 <a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
-<a href="mailto:?subject=데이터 나누고 바꾸고 붙이기&amp;body=Check out this site http://philogrammer.com/2016-11-28/studying-r/" class="ssk ssk-icon ssk-email"></a>
+<a href="mailto:?subject=데이터 나누고 바꾸고 붙이기 1탄 Apply&amp;body=Check out this site http://philogrammer.com/2016-11-28/studying-r/" class="ssk ssk-icon ssk-email"></a>
 
     <hr>
   </div>
