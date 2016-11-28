@@ -3,6 +3,7 @@ title: "패키지 만들기"
 author: "JuyoungMaeng"
 date: '2016-11-11'
 output: html_document
+published: false
 ---
 
 ```{r setup, include=FALSE}

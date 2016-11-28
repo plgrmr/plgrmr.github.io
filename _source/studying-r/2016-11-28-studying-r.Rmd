@@ -1,0 +1,75 @@
+---
+layout: post
+title:  데이터 나누고 바꾸고 붙이기
+date: "`r Sys.time()`"
+published: true
+tags: [data-science, apply]
+---
+
+R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 `apply` 친구들을 마주쳤을 때입니다.
+
+열공해보도록 합시다. 
+
+## Apply 패밀리
+
+R에는 다양한 Apply 들이 있습니다. `tapply`, `lapply`, `mapply` 와 같은 관련 함수들이 내장되어 있다고 합니다.
+
+### Apply
+
+- `apply` 는 Matrix에 대해서만 사용될 수 있습니다. 이는 모든 원소가 Character, numeric, logical 중 어느 것이든지 같은 형이어야만 합니다. 
+
+- `apply` 인자 설명 ```apply(theMatrix, 2, sum)``` 
+  * 첫번째 인자 : 다루고자 하는 객체입니다.
+  * 두번째 인자 : 함수를 어느기준으로 적용해야할지 지정하는 인자입니다.(1은 행단위 2는 열단위) 
+  * 세번째 인자 : 적용하고자 하는 함수입니다.
+  
+```{r}
+
+#행렬생성
+theMatrix <- matrix(1:9, nrow = 3)
+
+#행렬 프린트
+theMatrix
+
+#행을 합한다
+apply(theMatrix, 1, sum)
+
+#열을 합한다
+apply(theMatrix, 2, sum)
+
+# 결측치 다루어보기 위해 임의로 NA 만들어보기
+theMatrix[2, 1] <- NA
+apply(theMatrix, 1, sum)
+
+#NA 값 제거하고 apply 수행
+apply(theMatrix, 1, sum, na.rm = TRUE)
+
+```
+
+### lapply
+
+* `lapply`는 list의 각 원소에 함수를 적용하고, list 로 그 결과를 리턴합니다.
+
+```{r}
+# 리스트를 만듭니다. 안에 matrix 도 들어있고 숫자도 들어있고 다양한 아이들이 들어있습니다.
+theList <- list(A = matrix(1:9, 3), B = 1:5, 
+                C = matrix(1:4, 2), D = 2)
+
+# 잘 만들었는지 확인해봅니다.
+theList
+
+# 정말 List 각 원소를 더해줍니다. List Apply 여서 lapply 인가봅니다.
+lapply(theList, sum)
+
+```
+
+
+### sapply
+
+* `sapply` 는 lapply 와 기능면에서 모든 것이 동일하며 
+
+
+
+
+
+
