@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  맥 / 윈도우 에서 한글문서 열때 인코딩 문제
+description: 한글문서 열때 인코딩 문제 해결하기
 date: "`r Sys.time()`"
 published: true
 tags: [Encoding, Basics]
@@ -25,6 +26,11 @@ Mac 에서 작업하여 Export 한 csv 문서는 일반적으로 "UTF-8" 이라�
 EUC-KR, UTF-8 문서를 작업하는 환경의 경우에 수는 다음과 같습니다.
 
 ![plot of chunk unnamed-chunk-1](/figure/source/encoding/2016-11-26-encoding/1.png)
+
+||  EUC-KR      |  UTF-8 |
+|----------------|:-------------:|:------:|
+| 윈도우           |  EUC-KR 문서를 EUC-KR 환경에서 여는경우 | UTF-8 문서를 EUC-KR 환경에서 여는 경우 |
+| 맥(유닉스)       |    EUC-KR 문서를 UTF-8 환경에서 여는경우   |   UTF-8 문서를 UTF-8 환경에서 여는 경우 |
 
 각 환경의 예시를 위하여 budong_euc, budong_utf 라는 파일을 만들어 보았습니다.
 
@@ -75,3 +81,4 @@ read.csv("/r/testdata/budong_utf.csv")
 ```
 
 만 하여도 문서를 자연스럽게 열 수 있습니다.
+
