@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>빅데이터를 위한 수학 - 비율</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/social-share-kit.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>빅데이터를 위한 수학 - 비율 - Philogrammer</title>
+<meta property="og:title" content="빅데이터를 위한 수학 - 비율" />
+<meta name="description" content="비율" />
+<meta property="og:description" content="비율" />
+<link rel="canonical" href="http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" />
+<meta property="og:url" content="http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" />
+<meta property="og:site_name" content="Philogrammer" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-11-29T18:45:50+09:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "빅데이터를 위한 수학 - 비율",
+"datePublished": "2016-11-29T18:45:50+09:00",
+"description": "비율",
+"url": "http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87358817-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header>
+  <h1 class="header-small">
+    <a href="http://philogrammer.com">Philogrammer</a>
+  </h1>
+</header>
+<div class="post">
+  <h1 class="post-title">빅데이터를 위한 수학 - 비율</h1>
+  <span class="post-date">
+    <time>29 Nov 2016</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://philogrammer.com/tags#기초수학" class="tag">
+          <span class="term">기초수학</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://philogrammer.com/tags#빅데이터" class="tag">
+          <span class="term">빅데이터</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h1 id="section">비율</h1>
+
+<p><code class="highlighter-rouge">비율 = 비교하는 양 / 기준으로 삼은 양</code></p>
+
+<ul>
+  <li>
+    <p>같은 단위끼리의 비율은 ‘포함제’</p>
+
+    <ul>
+      <li>
+        <p>예시</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>같은 학급 50명 중에서 남학생 30명에서 남자의 비율을 구하는 경우
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>같은 단위끼리의 비율, 즉 <code class="highlighter-rouge">포함제</code>의 비율은 기준에 대한 비교하는 양(부분) 의 비율을 나타낸다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>다른 단위끼리의 비율은 ‘등분제’</p>
+
+    <ul>
+      <li>
+        <p>예시</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code>두 종류의 우유 중 A는 400ml 에 120엔 B는 900ml 에 300엔. 어느 쪽이 더 이익일까?
+    
+A는 0.3[엔/ml] -&gt; 1ml 당 0.3엔
+B는 0.333...[엔/ml] -&gt; 1ml 당 0.333... 엔. 
+    
+A가 이익
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>일반적으로 사용하는 단위끼리의 비율이 <code class="highlighter-rouge">등분제</code>이다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="section-1">여러 가지 그래프</h1>
+
+<ul>
+  <li>
+    <p>막대그래프</p>
+
+    <ul>
+      <li>양의 대소를 나타낸다</li>
+    </ul>
+  </li>
+  <li>
+    <p>꺾은선그래프</p>
+
+    <ul>
+      <li>변화를 나타낸다</li>
+      <li>변화의 정도에 대한 이미지를 그래프 작성자가(어느 정도) 조작이 가능하다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>원그래프</p>
+
+    <ul>
+      <li>비율을 나타낸다</li>
+      <li>각각의 항목이 어느 정도 비율을 차지 하는지 나타내기에 적합하다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>띠그래프</p>
+
+    <ul>
+      <li>비율을 비교한다.</li>
+      <li>비율의 증감만으로 절대수의 증감을 판단할 수 없다.</li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+  <!-- Share -->
+  
+  <div class="post-share">
+    <hr>
+    <span>Share this: <br /></span>
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
+<a href="https://twitter.com/intent/tweet?text=빅데이터를 위한 수학 - 비율&url=http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
+<a href="mailto:?subject=빅데이터를 위한 수학 - 비율&amp;body=Check out this site http://philogrammer.com/2016-11-29/basic-math-for-big-data-1/" class="ssk ssk-icon ssk-email"></a>
+
+    <hr>
+  </div>
+  
+
+  <!-- Disqus -->
+  
+  <section id="disqus_thread"></section>
+  <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//philogrammer.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+	<hr />
+	<div class="footer-link">
+		
+		<a href="https://www.facebook.com/philogrammer"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://twitter.com/philogrammer"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://github.com/plgrmr"><i class="fa fa-github" aria-hidden="true"></i></a>
+		
+
+		
+
+		
+
+		
+
+		
+		<a href="mailto:philogrammer@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		
+
+	</div>
+	© 2016 philogrammer. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>
