@@ -94,21 +94,6 @@ A가 이익
 			</item>
 		
 			<item>
-				<title>new post</title>
-        <description>&lt;p&gt;Your markdown here!&lt;/p&gt;
-
-&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/figure/source/new-post/2016-11-29-new-post/unnamed-chunk-1-1.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;/p&gt;
-</description>
-				<pubDate>Tue, 29 Nov 2016 16:59:28 +0900</pubDate>
-				<link>http://philogrammer.com/2016-11-29/new-post/</link>
-				<guid isPermaLink="true">http://philogrammer.com/2016-11-29/new-post/</guid>
-			</item>
-		
-			<item>
 				<title>데이터 나누고 바꾸고 붙이기 1탄 Apply</title>
         <description>&lt;p&gt;R을 공부하면서 혼돈이 오는 파트중 하나가 바로 이 &lt;code class=&quot;highlighter-rouge&quot;&gt;apply&lt;/code&gt; 친구들을 마주쳤을 때입니다.&lt;/p&gt;
 
