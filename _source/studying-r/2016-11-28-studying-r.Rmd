@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  데이터 나누고 바꾸고 붙이기 1탄 Apply
+title:  데이터 나누고 바꾸고 붙이기 - apply 함수
 date: "`r Sys.time()`"
 published: true
 tags: [data-science, apply]
@@ -80,6 +80,34 @@ lapply(theNames, nchar)
 
 
 ```
+
+### mapply
+
+* `mapply` 는 여러 리스트의 각 원소에 대해 함수를 적용한다.
+
+```{r}
+
+# 리스트 두개를 생성한다
+firstList <- list(A = matrix(1:16, 4), B = matrix(1:16, 2), C = 1:5)
+secondList <- list(A = matrix(1:16, 4), B = matrix(1:16, 8), C = 15:1)
+
+#원소간 동일여부 테스트
+mapply(identical, firstList, secondList)
+
+#원소 간 행의 수를 더하는 간단한 함수
+simplefunc <- function(x, y) {
+  
+  NROW(x) + NROW(y)
+  
+}
+
+# 이 함수를 두 list 에 적용
+
+mapply(simplefunc, firstList, secondList)
+
+
+```
+
 
 
 

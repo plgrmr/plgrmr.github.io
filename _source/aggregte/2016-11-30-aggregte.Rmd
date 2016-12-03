@@ -1,0 +1,235 @@
+---
+layout: post
+title:  Aggregate 와 Plyr
+date: "`r Sys.time()`"
+published: true
+tags: [data-science, r, aggregate]
+---
+
+## Aggregate
+
+Aggregate는 SQL의 group by 와 유사한 기능을 합니다.
+
+```{r}
+
+require(ggplot2)
+data(diamonds)
+head(diamonds)
+
+# Cut 으로 Price 가 집계됨을 뜻함. 
+
+aggregate(price ~ cut, diamonds, mean)
+
+# 더하기로 추가 변수를 지정하여 여러개의 변수로 데이터를 그룹화
+
+aggregate(price ~ cut + color, diamonds, mean)
+
+aggregate(cbind(price, carat) ~ cut, diamonds, mean)
+
+aggregate(cbind(price, carat) ~ cut + color, diamonds, mean)
+
+
+```
+
+## plyr
+
+plyr 의 핵심은 ddply, llply, ldply 같은 함수들로 구성된다.
+
+### ddply
+
+- ddply 는 data.frame을 입력으로 받아 변수에 따라 입력을 분리하고 분리된 각 부분에 대해 지정된 작업을 수행 후 data.frame 형태로 리턴한다. 
+
+```{r}
+
+require(plyr)
+head(baseball)
+
+#출루율 계산방법
+# 출루율  = H(안타) + BB(볼넷) + HBP(사구) / AB(타수) + BB(볼넷) + HBP(사구) + SF(희생 플라이)
+
+#데이터 일부 추출
+#규칙 변화로 인한 1954년 이전 희생 플라이는 0 으로 처리
+baseball$sf[baseball$year < 1954] <- 0
+#잘 되었나 확인
+any(is.na(baseball$sf))
+#hbp 가 NA 인 경우가 있어 NA 를 0으로 설정 
+baseball$hbp[is.na(baseball$hbp)] <- 0
+#제대로 되었나 확인
+any(is.na(baseball$hbp))
+
+#한시즌에 50타석 이상인 선수만 남겨둠
+baseball <- baseball[baseball$ab >= 50, ]
+
+#특정연도 특정선수 OBP 계산은 vector 연산으로 쉽게 가능 
+#with 함수는 data frame 의 이름을 명시하지 않고 열을 지정할 수 있도록 해줌
+baseball$OBP <- with(baseball, (h+bb+hbp) / sum(ab+bb+hbp+sf))
+tail(baseball)
+
+#계산 수행하는 함수 만들고 ddply 사용하여 각 선수에 대해 계산 수행
+obp <- function(data) {
+  
+  c(OBP = with(data, sum(h+bb+hbp) / sum(ab+bb+hbp+sf)))
+  
+}
+
+#각 선수에 대한 커리어 OBP 를 계산하기 위해 ddply 를 사용
+#SQL group by 의 by 에 해당한다. fun 은 function 의 obp 
+careerOBP <- ddply(baseball, .variables = "id", .fun = obp)
+
+#OBP로 결과를 정렬한다.
+careerOBP <- careerOBP[order(careerOBP$OBP, decreasing = TRUE), ]
+
+#결과를 확인한다.
+head(careerOBP, 10)
+
+
+
+```
+
+### llply
+
+결과값을 반환할때 
+
+```{r}
+
+theList <- list(A = matrix(1:9, 3), B = 1:5, C = matrix(1:4, 2), D = 2)
+lapply(theList, sum)
+llply(theList, sum)
+
+#list로 반환
+sapply(theList, sum)
+laply(theList, sum)
+
+#Vector 로 반환하지만 이름있음
+sapply(theList, sum)
+
+#Vector로 반환하지만 이름 없음
+laply(theList, sum)
+
+```
+
+
+### plyr 보조함수
+
+each 는 aggregate 함수에 여러 함수 사용 할 수 있게 해준다.
+
+```{r}
+
+aggregate(price ~ cut, diamonds, each(mean, median))
+
+```
+
+
+## data.table
+
+```{r}
+
+require(data.table)
+
+# Data Frame 생성
+theDF <- data.frame(A = 1:10,
+                    B = letters[1:10],
+                    C = LETTERS[11:20],
+                    D = rep(c("One", "Two", "Three"), length.out = 10))
+
+# 하나의 data.table을 생성
+theDT <- data.table(A = 1:10,
+                    B = letters[1:10],
+                    C = LETTERS[11:20],
+                    D = rep(c("One", "Two", "Three"), length.out = 10))
+
+#두개비교
+theDF
+theDT
+
+# Data frame 은 문자 데이터를 factor로 변환
+# Data table 은 character 로 남겨둠
+
+class(theDF$B)
+class(theDT$B)
+
+# Data frame을 Data table 로 변환도 가능
+
+diamondsDT <- data.table(diamonds)
+diamondsDT
+
+#Data.table 은 첫 다섯줄과 끝 다섯줄만 출력함
+
+#행의 접근방법은 data.frame 행 접근법과 동일함
+theDT[1:2, ]
+
+theDT[theDT$A >= 7, ]
+
+#data.table 에서는 열들을 character가 아닌 실제 이름의 list 로 명시
+
+theDT[, list(A,C)]
+
+#하나의 열만 선택
+theDT[, B]
+
+#data.table의 구조를 유지하면서 하나의 열을 선택
+theDT[, list(B)]
+
+#열 이름이 함수의 인자로 전달될 수도 있기 때문에, character 로 열 이름을 명시해야 한다면 with 를 FALSE 로 둠
+b <- "B"
+theDT[, b, with = FALSE]
+
+theDT[, c("A", "C"), with = FALSE]
+
+# 이러한 사용방식은 list 대신 vector에 열 이름을 지정한 것이다.
+
+
+
+```
+
+### 키(key)
+
+```{r}
+#몇 가지 data.table이 메모리에 있으며 그것에 대한 많은 정보를 볼 수 있는지 알려줌
+tables()
+
+#Key 는 data.table 열을 인덱싱하는데 사용되며 속도 향상을 제공함
+# 키 설정법
+setkey(theDT, D)
+# data Table 다시보기
+tables()
+key(theDT)
+
+#키 열의 값으로도 행 선택이 가능하다.
+theDT["One", ]
+
+theDT[c("One", "Two"), ]
+
+# 다수의 열도 키 설정 가능
+setkey(diamondsDT, cut, color)
+
+#모든 키에 따라 행에 접근하기 위한 J 함수가 있음
+#J 함수는 여러 인자를 취하는데 각각은 선택할 값의 vector 임
+
+diamondsDT[J("Ideal", "E"), ]
+diamondsDT[J("Ideal", c("E", "D"))]
+
+```
+
+### data.table 집계
+
+data.table의 내장된 집계 기능은 상당히 빠르다.
+
+```{r}
+
+#aggregate group by 하는 경우
+aggregate(price ~ cut, diamonds, mean)
+
+# data.table을 사용하여 같은 결과 내는 방법
+diamondsDT[, mean(price), by = cut]
+
+diamondsDT[, list(price = mean(price)), by = cut]
+
+# 여러 열에 대해 집계하기 위해 list() 로 해당 열을 지정
+diamondsDT[, mean(price), by = list(cut, color)]
+
+
+
+```
+
+

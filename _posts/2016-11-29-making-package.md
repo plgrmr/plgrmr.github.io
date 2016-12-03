@@ -1,19 +1,12 @@
 ---
 title: "패키지 만들기"
 author: "JuyoungMaeng"
-date: '2016-11-11'
-output: html_document
-published: false
+date: '2016-11-29'
+published: true
 ---
 
 
 
-
-```r
-plot(1:10)
-```
-
-![plot of chunk unnamed-chunk-1](/figure/source/draft/unnamed-chunk-1-1.png)
 
 ## 패키지 만들기 101
 
@@ -89,7 +82,7 @@ seoulmap(dong=("구로동"),fill="red")
 ## maptools at the next major release
 ```
 
-![plot of chunk seoulmap](/figure/source/draft/seoulmap-1.png)
+![plot of chunk seoulmap](/figure/source/making-package/2016-11-29-making-package/seoulmap-1.png)
 
 
 ## 따라하기만 하면 되는 패키지 만들기

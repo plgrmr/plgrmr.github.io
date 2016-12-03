@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aggregate 와 Plyr</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/social-share-kit.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Aggregate 와 Plyr - Philogrammer</title>
+<meta property="og:title" content="Aggregate 와 Plyr" />
+<meta name="description" content="Aggregate" />
+<meta property="og:description" content="Aggregate" />
+<link rel="canonical" href="http://philogrammer.com/2016-12-03/aggregte/" />
+<meta property="og:url" content="http://philogrammer.com/2016-12-03/aggregte/" />
+<meta property="og:site_name" content="Philogrammer" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-03T14:25:10+09:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Aggregate 와 Plyr",
+"datePublished": "2016-12-03T14:25:10+09:00",
+"description": "Aggregate",
+"url": "http://philogrammer.com/2016-12-03/aggregte/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87358817-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header>
+  <h1 class="header-small">
+    <a href="http://philogrammer.com">Philogrammer</a>
+  </h1>
+</header>
+<div class="post">
+  <h1 class="post-title">Aggregate 와 Plyr</h1>
+  <span class="post-date">
+    <time>03 Dec 2016</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://philogrammer.com/tags#data-science" class="tag">
+          <span class="term">data-science</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://philogrammer.com/tags#r" class="tag">
+          <span class="term">r</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://philogrammer.com/tags#aggregate" class="tag">
+          <span class="term">aggregate</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h2 id="aggregate">Aggregate</h2>
+
+<p>Aggregate는 SQL의 group by 와 유사한 기능을 합니다.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Loading required package: ggplot2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">diamonds</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">diamonds</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## # A tibble: 6 × 10
+##   carat       cut color clarity depth table price     x     y     z
+##   &lt;dbl&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
+## 3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
+## 5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># Cut 으로 Price 가 집계됨을 뜻함. 
+</span><span class="w">
+</span><span class="n">aggregate</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         cut    price
+## 1      Fair 4358.758
+## 2      Good 3928.864
+## 3 Very Good 3981.760
+## 4   Premium 4584.258
+## 5     Ideal 3457.542
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 더하기로 추가 변수를 지정하여 여러개의 변수로 데이터를 그룹화
+</span><span class="w">
+</span><span class="n">aggregate</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut color    price
+## 1       Fair     D 4291.061
+## 2       Good     D 3405.382
+## 3  Very Good     D 3470.467
+## 4    Premium     D 3631.293
+## 5      Ideal     D 2629.095
+## 6       Fair     E 3682.312
+## 7       Good     E 3423.644
+## 8  Very Good     E 3214.652
+## 9    Premium     E 3538.914
+## 10     Ideal     E 2597.550
+## 11      Fair     F 3827.003
+## 12      Good     F 3495.750
+## 13 Very Good     F 3778.820
+## 14   Premium     F 4324.890
+## 15     Ideal     F 3374.939
+## 16      Fair     G 4239.255
+## 17      Good     G 4123.482
+## 18 Very Good     G 3872.754
+## 19   Premium     G 4500.742
+## 20     Ideal     G 3720.706
+## 21      Fair     H 5135.683
+## 22      Good     H 4276.255
+## 23 Very Good     H 4535.390
+## 24   Premium     H 5216.707
+## 25     Ideal     H 3889.335
+## 26      Fair     I 4685.446
+## 27      Good     I 5078.533
+## 28 Very Good     I 5255.880
+## 29   Premium     I 5946.181
+## 30     Ideal     I 4451.970
+## 31      Fair     J 4975.655
+## 32      Good     J 4574.173
+## 33 Very Good     J 5103.513
+## 34   Premium     J 6294.592
+## 35     Ideal     J 4918.186
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">aggregate</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">carat</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         cut    price     carat
+## 1      Fair 4358.758 1.0461366
+## 2      Good 3928.864 0.8491847
+## 3 Very Good 3981.760 0.8063814
+## 4   Premium 4584.258 0.8919549
+## 5     Ideal 3457.542 0.7028370
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">aggregate</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">carat</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut color    price     carat
+## 1       Fair     D 4291.061 0.9201227
+## 2       Good     D 3405.382 0.7445166
+## 3  Very Good     D 3470.467 0.6964243
+## 4    Premium     D 3631.293 0.7215471
+## 5      Ideal     D 2629.095 0.5657657
+## 6       Fair     E 3682.312 0.8566071
+## 7       Good     E 3423.644 0.7451340
+## 8  Very Good     E 3214.652 0.6763167
+## 9    Premium     E 3538.914 0.7177450
+## 10     Ideal     E 2597.550 0.5784012
+## 11      Fair     F 3827.003 0.9047115
+## 12      Good     F 3495.750 0.7759296
+## 13 Very Good     F 3778.820 0.7409612
+## 14   Premium     F 4324.890 0.8270356
+## 15     Ideal     F 3374.939 0.6558285
+## 16      Fair     G 4239.255 1.0238217
+## 17      Good     G 4123.482 0.8508955
+## 18 Very Good     G 3872.754 0.7667986
+## 19   Premium     G 4500.742 0.8414877
+## 20     Ideal     G 3720.706 0.7007146
+## 21      Fair     H 5135.683 1.2191749
+## 22      Good     H 4276.255 0.9147293
+## 23 Very Good     H 4535.390 0.9159485
+## 24   Premium     H 5216.707 1.0164492
+## 25     Ideal     H 3889.335 0.7995249
+## 26      Fair     I 4685.446 1.1980571
+## 27      Good     I 5078.533 1.0572222
+## 28 Very Good     I 5255.880 1.0469518
+## 29   Premium     I 5946.181 1.1449370
+## 30     Ideal     I 4451.970 0.9130291
+## 31      Fair     J 4975.655 1.3411765
+## 32      Good     J 4574.173 1.0995440
+## 33 Very Good     J 5103.513 1.1332153
+## 34   Premium     J 6294.592 1.2930941
+## 35     Ideal     J 4918.186 1.0635937
+</code></pre>
+</div>
+
+<h2 id="plyr">plyr</h2>
+
+<p>plyr 의 핵심은 ddply, llply, ldply 같은 함수들로 구성된다.</p>
+
+<h3 id="ddply">ddply</h3>
+
+<ul>
+  <li>ddply 는 data.frame을 입력으로 받아 변수에 따라 입력을 분리하고 분리된 각 부분에 대해 지정된 작업을 수행 후 data.frame 형태로 리턴한다.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">require</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Loading required package: plyr
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">head</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##            id year stint team lg  g  ab  r  h X2b X3b hr rbi sb cs bb so
+## 4   ansonca01 1871     1  RC1    25 120 29 39  11   3  0  16  6  2  2  1
+## 44  forceda01 1871     1  WS3    32 162 45 45   9   4  0  29  8  0  4  0
+## 68  mathebo01 1871     1  FW1    19  89 15 24   3   1  0  10  2  1  2  0
+## 99  startjo01 1871     1  NY2    33 161 35 58   5   1  1  34  4  2  3  0
+## 102 suttoez01 1871     1  CL1    29 128 35 45   3   7  3  23  3  1  1  0
+## 106 whitede01 1871     1  CL1    29 146 40 47   6   5  1  21  2  2  4  1
+##     ibb hbp sh sf gidp
+## 4    NA  NA NA NA   NA
+## 44   NA  NA NA NA   NA
+## 68   NA  NA NA NA   NA
+## 99   NA  NA NA NA   NA
+## 102  NA  NA NA NA   NA
+## 106  NA  NA NA NA   NA
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#출루율 계산방법
+# 출루율  = H(안타) + BB(볼넷) + HBP(사구) / AB(타수) + BB(볼넷) + HBP(사구) + SF(희생 플라이)
+</span><span class="w">
+</span><span class="c1">#데이터 일부 추출
+#규칙 변화로 인한 1954년 이전 희생 플라이는 0 으로 처리
+</span><span class="n">baseball</span><span class="o">$</span><span class="n">sf</span><span class="p">[</span><span class="n">baseball</span><span class="o">$</span><span class="n">year</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1954</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="c1">#잘 되었나 확인
+</span><span class="nf">any</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">baseball</span><span class="o">$</span><span class="n">sf</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] FALSE
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#hbp 가 NA 인 경우가 있어 NA 를 0으로 설정 
+</span><span class="n">baseball</span><span class="o">$</span><span class="n">hbp</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">baseball</span><span class="o">$</span><span class="n">hbp</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="c1">#제대로 되었나 확인
+</span><span class="nf">any</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">baseball</span><span class="o">$</span><span class="n">hbp</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] FALSE
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#한시즌에 50타석 이상인 선수만 남겨둠
+</span><span class="n">baseball</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">baseball</span><span class="p">[</span><span class="n">baseball</span><span class="o">$</span><span class="n">ab</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+
+</span><span class="c1">#특정연도 특정선수 OBP 계산은 vector 연산으로 쉽게 가능 
+#with 함수는 data frame 의 이름을 명시하지 않고 열을 지정할 수 있도록 해줌
+</span><span class="n">baseball</span><span class="o">$</span><span class="n">OBP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">baseball</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="o">+</span><span class="n">bb</span><span class="o">+</span><span class="n">hbp</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">ab</span><span class="o">+</span><span class="n">bb</span><span class="o">+</span><span class="n">hbp</span><span class="o">+</span><span class="n">sf</span><span class="p">))</span><span class="w">
+</span><span class="n">tail</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##              id year stint team lg   g  ab  r   h X2b X3b hr rbi sb cs  bb
+## 89499 claytro01 2007     1  TOR AL  69 189 23  48  14   0  1  12  2  1  14
+## 89502 cirilje01 2007     1  MIN AL  50 153 18  40   9   2  2  21  2  0  15
+## 89521 bondsba01 2007     1  SFN NL 126 340 75  94  14   0 28  66  5  0 132
+## 89523 biggicr01 2007     1  HOU NL 141 517 68 130  31   3 10  50  4  3  23
+## 89530 ausmubr01 2007     1  HOU NL 117 349 38  82  16   3  3  25  6  1  37
+## 89533  aloumo01 2007     1  NYN NL  87 328 51 112  19   1 13  49  3  0  27
+##        so ibb hbp sh sf gidp          OBP
+## 89499  50   0   1  3  3    8 1.178054e-05
+## 89502  13   0   1  3  2    9 1.047159e-05
+## 89521  54  43   3  0  2   13 4.282133e-05
+## 89523 112   0   3  7  5    5 2.917086e-05
+## 89530  74   3   6  4  1   11 2.337409e-05
+## 89533  30   5   2  0  3   13 2.636597e-05
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#계산 수행하는 함수 만들고 ddply 사용하여 각 선수에 대해 계산 수행
+</span><span class="n">obp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  
+  </span><span class="nf">c</span><span class="p">(</span><span class="n">OBP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">with</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">h</span><span class="o">+</span><span class="n">bb</span><span class="o">+</span><span class="n">hbp</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">ab</span><span class="o">+</span><span class="n">bb</span><span class="o">+</span><span class="n">hbp</span><span class="o">+</span><span class="n">sf</span><span class="p">)))</span><span class="w">
+  
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#각 선수에 대한 커리어 OBP 를 계산하기 위해 ddply 를 사용
+#SQL group by 의 by 에 해당한다. fun 은 function 의 obp 
+</span><span class="n">careerOBP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ddply</span><span class="p">(</span><span class="n">baseball</span><span class="p">,</span><span class="w"> </span><span class="n">.variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w"> </span><span class="n">.fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obp</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#OBP로 결과를 정렬한다.
+</span><span class="n">careerOBP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">careerOBP</span><span class="p">[</span><span class="n">order</span><span class="p">(</span><span class="n">careerOBP</span><span class="o">$</span><span class="n">OBP</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w">
+
+</span><span class="c1">#결과를 확인한다.
+</span><span class="n">head</span><span class="p">(</span><span class="n">careerOBP</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##             id       OBP
+## 1089 willite01 0.4816861
+## 875   ruthba01 0.4742209
+## 658  mcgrajo01 0.4657478
+## 356  gehrilo01 0.4477848
+## 85   bondsba01 0.4444622
+## 476  hornsro01 0.4339068
+## 184   cobbty01 0.4329655
+## 327   foxxji01 0.4290509
+## 953  speaktr01 0.4283386
+## 191  collied01 0.4251246
+</code></pre>
+</div>
+
+<h3 id="llply">llply</h3>
+
+<p>결과값을 반환할때</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">lapply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## $A
+## [1] 45
+## 
+## $B
+## [1] 15
+## 
+## $C
+## [1] 10
+## 
+## $D
+## [1] 2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">llply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## $A
+## [1] 45
+## 
+## $B
+## [1] 15
+## 
+## $C
+## [1] 10
+## 
+## $D
+## [1] 2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#list로 반환
+</span><span class="n">sapply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  A  B  C  D 
+## 45 15 10  2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">laply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] 45 15 10  2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#Vector 로 반환하지만 이름있음
+</span><span class="n">sapply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  A  B  C  D 
+## 45 15 10  2
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#Vector로 반환하지만 이름 없음
+</span><span class="n">laply</span><span class="p">(</span><span class="n">theList</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] 45 15 10  2
+</code></pre>
+</div>
+
+<h3 id="plyr-">plyr 보조함수</h3>
+
+<p>each 는 aggregate 함수에 여러 함수 사용 할 수 있게 해준다.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">aggregate</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">each</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         cut price.mean price.median
+## 1      Fair   4358.758     3282.000
+## 2      Good   3928.864     3050.500
+## 3 Very Good   3981.760     2648.000
+## 4   Premium   4584.258     3185.000
+## 5     Ideal   3457.542     1810.000
+</code></pre>
+</div>
+
+<h2 id="datatable">data.table</h2>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">require</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Loading required package: data.table
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># Data Frame 생성
+</span><span class="n">theDF</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w">
+                    </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w">
+                    </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">LETTERS</span><span class="p">[</span><span class="m">11</span><span class="o">:</span><span class="m">20</span><span class="p">],</span><span class="w">
+                    </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"One"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Two"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Three"</span><span class="p">),</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># 하나의 data.table을 생성
+</span><span class="n">theDT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w">
+                    </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">],</span><span class="w">
+                    </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">LETTERS</span><span class="p">[</span><span class="m">11</span><span class="o">:</span><span class="m">20</span><span class="p">],</span><span class="w">
+                    </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"One"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Two"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Three"</span><span class="p">),</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">))</span><span class="w">
+
+</span><span class="c1">#두개비교
+</span><span class="n">theDF</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     A B C     D
+## 1   1 a K   One
+## 2   2 b L   Two
+## 3   3 c M Three
+## 4   4 d N   One
+## 5   5 e O   Two
+## 6   6 f P Three
+## 7   7 g Q   One
+## 8   8 h R   Two
+## 9   9 i S Three
+## 10 10 j T   One
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theDT</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      A B C     D
+##  1:  1 a K   One
+##  2:  2 b L   Two
+##  3:  3 c M Three
+##  4:  4 d N   One
+##  5:  5 e O   Two
+##  6:  6 f P Three
+##  7:  7 g Q   One
+##  8:  8 h R   Two
+##  9:  9 i S Three
+## 10: 10 j T   One
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># Data frame 은 문자 데이터를 factor로 변환
+# Data table 은 character 로 남겨둠
+</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">theDF</span><span class="o">$</span><span class="n">B</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] "factor"
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="nf">class</span><span class="p">(</span><span class="n">theDT</span><span class="o">$</span><span class="n">B</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] "character"
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># Data frame을 Data table 로 변환도 가능
+</span><span class="w">
+</span><span class="n">diamondsDT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="p">(</span><span class="n">diamonds</span><span class="p">)</span><span class="w">
+</span><span class="n">diamondsDT</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##        carat       cut color clarity depth table price    x    y    z
+##     1:  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+##     2:  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+##     3:  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+##     4:  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+##     5:  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+##    ---                                                               
+## 53936:  0.72     Ideal     D     SI1  60.8    57  2757 5.75 5.76 3.50
+## 53937:  0.72      Good     D     SI1  63.1    55  2757 5.69 5.75 3.61
+## 53938:  0.70 Very Good     D     SI1  62.8    60  2757 5.66 5.68 3.56
+## 53939:  0.86   Premium     H     SI2  61.0    58  2757 6.15 6.12 3.74
+## 53940:  0.75     Ideal     D     SI2  62.2    55  2757 5.83 5.87 3.64
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#Data.table 은 첫 다섯줄과 끝 다섯줄만 출력함
+</span><span class="w">
+</span><span class="c1">#행의 접근방법은 data.frame 행 접근법과 동일함
+</span><span class="n">theDT</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##    A B C   D
+## 1: 1 a K One
+## 2: 2 b L Two
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theDT</span><span class="p">[</span><span class="n">theDT</span><span class="o">$</span><span class="n">A</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     A B C     D
+## 1:  7 g Q   One
+## 2:  8 h R   Two
+## 3:  9 i S Three
+## 4: 10 j T   One
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#data.table 에서는 열들을 character가 아닌 실제 이름의 list 로 명시
+</span><span class="w">
+</span><span class="n">theDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">C</span><span class="p">)]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      A C
+##  1:  1 K
+##  2:  2 L
+##  3:  3 M
+##  4:  4 N
+##  5:  5 O
+##  6:  6 P
+##  7:  7 Q
+##  8:  8 R
+##  9:  9 S
+## 10: 10 T
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#하나의 열만 선택
+</span><span class="n">theDT</span><span class="p">[,</span><span class="w"> </span><span class="n">B</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#data.table의 구조를 유지하면서 하나의 열을 선택
+</span><span class="n">theDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">B</span><span class="p">)]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     B
+##  1: a
+##  2: b
+##  3: c
+##  4: d
+##  5: e
+##  6: f
+##  7: g
+##  8: h
+##  9: i
+## 10: j
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#열 이름이 함수의 인자로 전달될 수도 있기 때문에, character 로 열 이름을 명시해야 한다면 with 를 FALSE 로 둠
+</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"B"</span><span class="w">
+</span><span class="n">theDT</span><span class="p">[,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     B
+##  1: a
+##  2: b
+##  3: c
+##  4: d
+##  5: e
+##  6: f
+##  7: g
+##  8: h
+##  9: i
+## 10: j
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"C"</span><span class="p">),</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      A C
+##  1:  1 K
+##  2:  2 L
+##  3:  3 M
+##  4:  4 N
+##  5:  5 O
+##  6:  6 P
+##  7:  7 Q
+##  8:  8 R
+##  9:  9 S
+## 10: 10 T
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 이러한 사용방식은 list 대신 vector에 열 이름을 지정한 것이다.
+</span></code></pre>
+</div>
+
+<h3 id="key">키(key)</h3>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#몇 가지 data.table이 메모리에 있으며 그것에 대한 많은 정보를 볼 수 있는지 알려줌
+</span><span class="n">tables</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      NAME         NROW NCOL MB
+## [1,] diamondsDT 53,940   10  4
+## [2,] theDT          10    4  1
+##      COLS                                            KEY
+## [1,] carat,cut,color,clarity,depth,table,price,x,y,z    
+## [2,] A,B,C,D                                            
+## Total: 5MB
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#Key 는 data.table 열을 인덱싱하는데 사용되며 속도 향상을 제공함
+# 키 설정법
+</span><span class="n">setkey</span><span class="p">(</span><span class="n">theDT</span><span class="p">,</span><span class="w"> </span><span class="n">D</span><span class="p">)</span><span class="w">
+</span><span class="c1"># data Table 다시보기
+</span><span class="n">tables</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      NAME         NROW NCOL MB
+## [1,] diamondsDT 53,940   10  4
+## [2,] theDT          10    4  1
+##      COLS                                            KEY
+## [1,] carat,cut,color,clarity,depth,table,price,x,y,z    
+## [2,] A,B,C,D                                         D  
+## Total: 5MB
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">key</span><span class="p">(</span><span class="n">theDT</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] "D"
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#키 열의 값으로도 행 선택이 가능하다.
+</span><span class="n">theDT</span><span class="p">[</span><span class="s2">"One"</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     A B C   D
+## 1:  1 a K One
+## 2:  4 d N One
+## 3:  7 g Q One
+## 4: 10 j T One
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theDT</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="s2">"One"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Two"</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     A B C   D
+## 1:  1 a K One
+## 2:  4 d N One
+## 3:  7 g Q One
+## 4: 10 j T One
+## 5:  2 b L Two
+## 6:  5 e O Two
+## 7:  8 h R Two
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 다수의 열도 키 설정 가능
+</span><span class="n">setkey</span><span class="p">(</span><span class="n">diamondsDT</span><span class="p">,</span><span class="w"> </span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#모든 키에 따라 행에 접근하기 위한 J 함수가 있음
+#J 함수는 여러 인자를 취하는데 각각은 선택할 값의 vector 임
+</span><span class="w">
+</span><span class="n">diamondsDT</span><span class="p">[</span><span class="n">J</span><span class="p">(</span><span class="s2">"Ideal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"E"</span><span class="p">),</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##       carat   cut color clarity depth table price    x    y    z
+##    1:  0.23 Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+##    2:  0.26 Ideal     E    VVS2  62.9    58   554 4.02 4.06 2.54
+##    3:  0.70 Ideal     E     SI1  62.5    57  2757 5.70 5.72 3.57
+##    4:  0.59 Ideal     E    VVS2  62.0    55  2761 5.38 5.43 3.35
+##    5:  0.74 Ideal     E     SI2  62.2    56  2761 5.80 5.84 3.62
+##   ---                                                           
+## 3899:  0.70 Ideal     E     SI1  61.7    55  2745 5.71 5.74 3.53
+## 3900:  0.51 Ideal     E    VVS1  61.9    54  2745 5.17 5.11 3.18
+## 3901:  0.56 Ideal     E    VVS1  62.1    56  2750 5.28 5.29 3.28
+## 3902:  0.77 Ideal     E     SI2  62.1    56  2753 5.84 5.86 3.63
+## 3903:  0.71 Ideal     E     SI1  61.9    56  2756 5.71 5.73 3.54
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">diamondsDT</span><span class="p">[</span><span class="n">J</span><span class="p">(</span><span class="s2">"Ideal"</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"E"</span><span class="p">,</span><span class="w"> </span><span class="s2">"D"</span><span class="p">))]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##       carat   cut color clarity depth table price    x    y    z
+##    1:  0.23 Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+##    2:  0.26 Ideal     E    VVS2  62.9    58   554 4.02 4.06 2.54
+##    3:  0.70 Ideal     E     SI1  62.5    57  2757 5.70 5.72 3.57
+##    4:  0.59 Ideal     E    VVS2  62.0    55  2761 5.38 5.43 3.35
+##    5:  0.74 Ideal     E     SI2  62.2    56  2761 5.80 5.84 3.62
+##   ---                                                           
+## 6733:  0.51 Ideal     D    VVS2  61.7    56  2742 5.16 5.14 3.18
+## 6734:  0.51 Ideal     D    VVS2  61.3    57  2742 5.17 5.14 3.16
+## 6735:  0.81 Ideal     D     SI1  61.5    57  2748 6.00 6.03 3.70
+## 6736:  0.72 Ideal     D     SI1  60.8    57  2757 5.75 5.76 3.50
+## 6737:  0.75 Ideal     D     SI2  62.2    55  2757 5.83 5.87 3.64
+</code></pre>
+</div>
+
+<h3 id="datatable-">data.table 집계</h3>
+
+<p>data.table의 내장된 집계 기능은 상당히 빠르다.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#aggregate group by 하는 경우
+</span><span class="n">aggregate</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">diamonds</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         cut    price
+## 1      Fair 4358.758
+## 2      Good 3928.864
+## 3 Very Good 3981.760
+## 4   Premium 4584.258
+## 5     Ideal 3457.542
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># data.table을 사용하여 같은 결과 내는 방법
+</span><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cut</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut       V1
+## 1:      Fair 4358.758
+## 2:      Good 3928.864
+## 3: Very Good 3981.760
+## 4:   Premium 4584.258
+## 5:     Ideal 3457.542
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">)),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cut</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut    price
+## 1:      Fair 4358.758
+## 2:      Good 3928.864
+## 3: Very Good 3981.760
+## 4:   Premium 4584.258
+## 5:     Ideal 3457.542
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 여러 열에 대해 집계하기 위해 list() 로 해당 열을 지정
+</span><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##           cut color       V1
+##  1:      Fair     D 4291.061
+##  2:      Fair     E 3682.312
+##  3:      Fair     F 3827.003
+##  4:      Fair     G 4239.255
+##  5:      Fair     H 5135.683
+##  6:      Fair     I 4685.446
+##  7:      Fair     J 4975.655
+##  8:      Good     D 3405.382
+##  9:      Good     E 3423.644
+## 10:      Good     F 3495.750
+## 11:      Good     G 4123.482
+## 12:      Good     H 4276.255
+## 13:      Good     I 5078.533
+## 14:      Good     J 4574.173
+## 15: Very Good     D 3470.467
+## 16: Very Good     E 3214.652
+## 17: Very Good     F 3778.820
+## 18: Very Good     G 3872.754
+## 19: Very Good     H 4535.390
+## 20: Very Good     I 5255.880
+## 21: Very Good     J 5103.513
+## 22:   Premium     D 3631.293
+## 23:   Premium     E 3538.914
+## 24:   Premium     F 4324.890
+## 25:   Premium     G 4500.742
+## 26:   Premium     H 5216.707
+## 27:   Premium     I 5946.181
+## 28:   Premium     J 6294.592
+## 29:     Ideal     D 2629.095
+## 30:     Ideal     E 2597.550
+## 31:     Ideal     F 3374.939
+## 32:     Ideal     G 3720.706
+## 33:     Ideal     H 3889.335
+## 34:     Ideal     I 4451.970
+## 35:     Ideal     J 4918.186
+##           cut color       V1
+</code></pre>
+</div>
+
+
+
+
+  <!-- Share -->
+  
+  <div class="post-share">
+    <hr>
+    <span>Share this: <br /></span>
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-12-03/aggregte/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
+<a href="https://twitter.com/intent/tweet?text=Aggregate 와 Plyr&url=http://philogrammer.com/2016-12-03/aggregte/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-12-03/aggregte/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-12-03/aggregte/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
+<a href="mailto:?subject=Aggregate 와 Plyr&amp;body=Check out this site http://philogrammer.com/2016-12-03/aggregte/" class="ssk ssk-icon ssk-email"></a>
+
+    <hr>
+  </div>
+  
+
+  <!-- Disqus -->
+  
+  <section id="disqus_thread"></section>
+  <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//philogrammer.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+	<hr />
+	<div class="footer-link">
+		
+		<a href="https://www.facebook.com/philogrammer"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://twitter.com/philogrammer"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://github.com/plgrmr"><i class="fa fa-github" aria-hidden="true"></i></a>
+		
+
+		
+
+		
+
+		
+
+		
+		<a href="mailto:philogrammer@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		
+
+	</div>
+	© 2016 philogrammer. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

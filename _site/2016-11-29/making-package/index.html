@@ -19,18 +19,18 @@
 <meta property="og:title" content="패키지 만들기" />
 <meta name="description" content="패키지 만들기 101" />
 <meta property="og:description" content="패키지 만들기 101" />
-<link rel="canonical" href="http://philogrammer.com/2016-11-11/draft/" />
-<meta property="og:url" content="http://philogrammer.com/2016-11-11/draft/" />
+<link rel="canonical" href="http://philogrammer.com/2016-11-29/making-package/" />
+<meta property="og:url" content="http://philogrammer.com/2016-11-29/making-package/" />
 <meta property="og:site_name" content="Philogrammer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-11T00:00:00+09:00" />
+<meta property="article:published_time" content="2016-11-29T00:00:00+09:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "패키지 만들기",
-"datePublished": "2016-11-11T00:00:00+09:00",
+"datePublished": "2016-11-29T00:00:00+09:00",
 "description": "패키지 만들기 101",
-"url": "http://philogrammer.com/2016-11-11/draft/"}</script>
+"url": "http://philogrammer.com/2016-11-29/making-package/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -62,7 +62,7 @@ ga('send', 'pageview');
 <div class="post">
   <h1 class="post-title">패키지 만들기</h1>
   <span class="post-date">
-    <time>11 Nov 2016</time>
+    <time>29 Nov 2016</time>
   </span>
   <div class="post-tag">
     <ul>
@@ -142,23 +142,23 @@ ga('send', 'pageview');
 </code></pre>
 </div>
 
-<p><img src="/figure/source/draft/seoulmap-1.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/figure/source/making-package/2016-11-29-making-package/seoulmap-1.png" alt="plot of chunk seoulmap" /></p>
 
 <h2 id="section-2">따라하기만 하면 되는 패키지 만들기</h2>
 
-<p><img src="/figure/source/draft/1.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="./img/1.png" width="500" /></p>
 
 <p>RStudio 에서 File -&gt; New Project 를 누릅니다.</p>
 
-<p><img src="/figure/source/draft/2.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/2.png" width="500" /></p>
 
 <p>새로운 폴더를 만들 것이므로 New Directory 로 갑니다.</p>
 
-<p><img src="/figure/source/draft/3.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/3.png" width="500" /></p>
 
 <p>R Project 를 클릭하여 새로운 프로젝트를 만듭니다.</p>
 
-<p><img src="/figure/source/draft/4.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/4.png" width="500" /></p>
 
 <p>Type 은 Package, Package name 은 내가 만들 package의 이름</p>
 
@@ -166,7 +166,7 @@ ga('send', 'pageview');
 
 <p>create project 버튼을 누릅니다.</p>
 
-<p><img src="/figure/source/draft/5.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/5.png" width="500" /></p>
 
 <p>Package 가 완성되었습니다.</p>
 
@@ -174,7 +174,7 @@ ga('send', 'pageview');
 
 <h2 id="section-3">패키지 구성요소 파일과 폴더구조</h2>
 
-<p><img src="/figure/source/draft/6.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/6.png" width="500" /></p>
 
 <p>RStudio를 이용하여 패키지를 생성하면 위와 같은 파일들이 나옵니다.</p>
 
@@ -182,7 +182,7 @@ ga('send', 'pageview');
 
 <p><strong>DESCRIPTION 파일</strong></p>
 
-<p><img src="/figure/source/draft/7.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/7.png" width="500" /></p>
 
 <p>Description 파일을 열어보면 Package 의 정보가 한눈에 요약되어있습니다.</p>
 
@@ -196,7 +196,7 @@ ga('send', 'pageview');
 
 <p><strong>man 폴더</strong></p>
 
-<p><img src="/figure/source/draft/8.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/8.png" width="500" /></p>
 
 <p>Man 폴더는 Manual 즉 패키지 안에 들어있는 모든 함수들의 설명서 입니다.</p>
 
@@ -204,7 +204,7 @@ ga('send', 'pageview');
 
 <p><strong>R 폴더</strong></p>
 
-<p><img src="/figure/source/draft/9.png" alt="plot of chunk seoulmap" /></p>
+<p><img src="/r/project/testpackage/img/9.png" width="500" /></p>
 
 <p>R 폴더에는 패키지에 사용되는 모든 함수들의 소스코드가 저장됩니다.</p>
 
@@ -229,7 +229,7 @@ ga('send', 'pageview');
 <p>내 라이브러리 내의 파일 주소와 결합하면 됩니다.</p>
 
 <p>##배포
-<img src="/figure/source/draft/10.png" alt="plot of chunk seoulmap" /></p>
+<img src="/r/project/testpackage/img/10.png" width="500" /></p>
 
 <p>배포는 Build 메뉴에 Build Source 패키지를 누르면 자동으로 해당 폴더에</p>
 
@@ -242,15 +242,15 @@ ga('send', 'pageview');
   <div class="post-share">
     <hr>
     <span>Share this: <br /></span>
-<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-11/draft/" onclick="window.open(this.href, 'mywin',
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-29/making-package/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
-<a href="https://twitter.com/intent/tweet?text=패키지 만들기&url=http://philogrammer.com/2016-11-11/draft/" onclick="window.open(this.href, 'mywin',
+<a href="https://twitter.com/intent/tweet?text=패키지 만들기&url=http://philogrammer.com/2016-11-29/making-package/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
-<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-11/draft/" onclick="window.open(this.href, 'mywin',
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-29/making-package/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
-<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-11/draft/" onclick="window.open(this.href, 'mywin',
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-29/making-package/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
-<a href="mailto:?subject=패키지 만들기&amp;body=Check out this site http://philogrammer.com/2016-11-11/draft/" class="ssk ssk-icon ssk-email"></a>
+<a href="mailto:?subject=패키지 만들기&amp;body=Check out this site http://philogrammer.com/2016-11-29/making-package/" class="ssk ssk-icon ssk-email"></a>
 
     <hr>
   </div>
