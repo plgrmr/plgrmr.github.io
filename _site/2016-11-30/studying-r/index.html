@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>데이터 나누고 바꾸고 붙이기 1탄 Apply</title>
+  <title>데이터 나누고 바꾸고 붙이기 - apply 함수</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
@@ -15,22 +15,22 @@
 
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
   <!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>데이터 나누고 바꾸고 붙이기 1탄 Apply - Philogrammer</title>
-<meta property="og:title" content="데이터 나누고 바꾸고 붙이기 1탄 Apply" />
+<title>데이터 나누고 바꾸고 붙이기 - apply 함수 - Philogrammer</title>
+<meta property="og:title" content="데이터 나누고 바꾸고 붙이기 - apply 함수" />
 <meta name="description" content="데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다." />
 <meta property="og:description" content="데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다." />
-<link rel="canonical" href="http://philogrammer.com/2016-11-28/studying-r/" />
-<meta property="og:url" content="http://philogrammer.com/2016-11-28/studying-r/" />
+<link rel="canonical" href="http://philogrammer.com/2016-11-30/studying-r/" />
+<meta property="og:url" content="http://philogrammer.com/2016-11-30/studying-r/" />
 <meta property="og:site_name" content="Philogrammer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-11-28T21:43:41+09:00" />
+<meta property="article:published_time" content="2016-11-30T14:45:54+09:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "데이터 나누고 바꾸고 붙이기 1탄 Apply",
-"datePublished": "2016-11-28T21:43:41+09:00",
+"headline": "데이터 나누고 바꾸고 붙이기 - apply 함수",
+"datePublished": "2016-11-30T14:45:54+09:00",
 "description": "데이터 가공의 필수적인 함수 중 apply 시리즈를 알아봅니다.",
-"url": "http://philogrammer.com/2016-11-28/studying-r/"}</script>
+"url": "http://philogrammer.com/2016-11-30/studying-r/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -60,9 +60,9 @@ ga('send', 'pageview');
   </h1>
 </header>
 <div class="post">
-  <h1 class="post-title">데이터 나누고 바꾸고 붙이기 1탄 Apply</h1>
+  <h1 class="post-title">데이터 나누고 바꾸고 붙이기 - apply 함수</h1>
   <span class="post-date">
-    <time>28 Nov 2016</time>
+    <time>30 Nov 2016</time>
   </span>
   <div class="post-tag">
     <ul>
@@ -246,6 +246,44 @@ ga('send', 'pageview');
 </code></pre>
 </div>
 
+<h3 id="mapply">mapply</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">mapply</code> 는 여러 리스트의 각 원소에 대해 함수를 적용한다.</li>
+</ul>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># 리스트 두개를 생성한다
+</span><span class="n">firstList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w">
+</span><span class="n">secondList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">),</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="o">:</span><span class="m">1</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#원소간 동일여부 테스트
+</span><span class="n">mapply</span><span class="p">(</span><span class="n">identical</span><span class="p">,</span><span class="w"> </span><span class="n">firstList</span><span class="p">,</span><span class="w"> </span><span class="n">secondList</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##     A     B     C 
+##  TRUE FALSE FALSE
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#원소 간 행의 수를 더하는 간단한 함수
+</span><span class="n">simplefunc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  
+  </span><span class="n">NROW</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NROW</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w">
+  
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1"># 이 함수를 두 list 에 적용
+</span><span class="w">
+</span><span class="n">mapply</span><span class="p">(</span><span class="n">simplefunc</span><span class="p">,</span><span class="w"> </span><span class="n">firstList</span><span class="p">,</span><span class="w"> </span><span class="n">secondList</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  A  B  C 
+##  8 10 20
+</code></pre>
+</div>
+
 
 
 
@@ -254,15 +292,15 @@ ga('send', 'pageview');
   <div class="post-share">
     <hr>
     <span>Share this: <br /></span>
-<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-11-30/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
-<a href="https://twitter.com/intent/tweet?text=데이터 나누고 바꾸고 붙이기 1탄 Apply&url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
+<a href="https://twitter.com/intent/tweet?text=데이터 나누고 바꾸고 붙이기 - apply 함수&url=http://philogrammer.com/2016-11-30/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
-<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-11-30/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
-<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-28/studying-r/" onclick="window.open(this.href, 'mywin',
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-11-30/studying-r/" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
-<a href="mailto:?subject=데이터 나누고 바꾸고 붙이기 1탄 Apply&amp;body=Check out this site http://philogrammer.com/2016-11-28/studying-r/" class="ssk ssk-icon ssk-email"></a>
+<a href="mailto:?subject=데이터 나누고 바꾸고 붙이기 - apply 함수&amp;body=Check out this site http://philogrammer.com/2016-11-30/studying-r/" class="ssk ssk-icon ssk-email"></a>
 
     <hr>
   </div>
