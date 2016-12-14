@@ -23,12 +23,12 @@
 <meta property="og:url" content="http://philogrammer.com/2016-12-03/aggregte/" />
 <meta property="og:site_name" content="Philogrammer" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2016-12-03T14:25:10+09:00" />
+<meta property="article:published_time" content="2016-12-03T20:15:04+09:00" />
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
 "headline": "Aggregate 와 Plyr",
-"datePublished": "2016-12-03T14:25:10+09:00",
+"datePublished": "2016-12-03T20:15:04+09:00",
 "description": "Aggregate",
 "url": "http://philogrammer.com/2016-12-03/aggregte/"}</script>
 <!-- End Jekyll SEO tag -->
@@ -873,6 +873,78 @@ ga('send', 'pageview');
 ## 34:     Ideal     I 4451.970
 ## 35:     Ideal     J 4918.186
 ##           cut color       V1
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#aggregate 와 다르게 각 열에 대해 다른 메트릭이 계산될 수 있다.
+</span><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="n">carat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">carat</span><span class="p">)),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cut</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut    price     carat
+## 1:      Fair 4358.758 1.0461366
+## 2:      Good 3928.864 0.8491847
+## 3: Very Good 3981.760 0.8063814
+## 4:   Premium 4584.258 0.8919549
+## 5:     Ideal 3457.542 0.7028370
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="n">carat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">carat</span><span class="p">),</span><span class="w"> </span><span class="n">caratsum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">carat</span><span class="p">)),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cut</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##          cut    price     carat caratsum
+## 1:      Fair 4358.758 1.0461366  1684.28
+## 2:      Good 3928.864 0.8491847  4166.10
+## 3: Very Good 3981.760 0.8063814  9742.70
+## 4:   Premium 4584.258 0.8919549 12300.95
+## 5:     Ideal 3457.542 0.7028370 15146.84
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#다수의 메트릭에 대한 계산과 다수의 변수에 대한 그룹화는 동시에 가능
+</span><span class="n">diamondsDT</span><span class="p">[,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="n">carat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">carat</span><span class="p">)),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">cut</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##           cut color    price     carat
+##  1:      Fair     D 4291.061 0.9201227
+##  2:      Fair     E 3682.312 0.8566071
+##  3:      Fair     F 3827.003 0.9047115
+##  4:      Fair     G 4239.255 1.0238217
+##  5:      Fair     H 5135.683 1.2191749
+##  6:      Fair     I 4685.446 1.1980571
+##  7:      Fair     J 4975.655 1.3411765
+##  8:      Good     D 3405.382 0.7445166
+##  9:      Good     E 3423.644 0.7451340
+## 10:      Good     F 3495.750 0.7759296
+## 11:      Good     G 4123.482 0.8508955
+## 12:      Good     H 4276.255 0.9147293
+## 13:      Good     I 5078.533 1.0572222
+## 14:      Good     J 4574.173 1.0995440
+## 15: Very Good     D 3470.467 0.6964243
+## 16: Very Good     E 3214.652 0.6763167
+## 17: Very Good     F 3778.820 0.7409612
+## 18: Very Good     G 3872.754 0.7667986
+## 19: Very Good     H 4535.390 0.9159485
+## 20: Very Good     I 5255.880 1.0469518
+## 21: Very Good     J 5103.513 1.1332153
+## 22:   Premium     D 3631.293 0.7215471
+## 23:   Premium     E 3538.914 0.7177450
+## 24:   Premium     F 4324.890 0.8270356
+## 25:   Premium     G 4500.742 0.8414877
+## 26:   Premium     H 5216.707 1.0164492
+## 27:   Premium     I 5946.181 1.1449370
+## 28:   Premium     J 6294.592 1.2930941
+## 29:     Ideal     D 2629.095 0.5657657
+## 30:     Ideal     E 2597.550 0.5784012
+## 31:     Ideal     F 3374.939 0.6558285
+## 32:     Ideal     G 3720.706 0.7007146
+## 33:     Ideal     H 3889.335 0.7995249
+## 34:     Ideal     I 4451.970 0.9130291
+## 35:     Ideal     J 4918.186 1.0635938
+##           cut color    price     carat
 </code></pre>
 </div>
 

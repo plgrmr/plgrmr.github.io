@@ -1,0 +1,8 @@
+---
+layout: post
+title:  jekyll-knitr-gitpage 삼각관계로 블로그 만들기
+date: "`r Sys.time()`"
+published: true
+tags: [blog, knitr, gitpage]
+---
+
