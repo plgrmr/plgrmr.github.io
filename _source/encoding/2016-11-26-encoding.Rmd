@@ -32,7 +32,7 @@ install.packages("devtools")
 library(devtools)
 
 # 제가 만든 패키지를 로드합니다.
-install_github("plgrmr/readKor")
+install_github("plgrmr/readKor", force = TRUE)
 library(readKor)
 
 #사용법은 read.table / read.csv 와 유사합니다만 csv 파일인지 txt 파일인지 type 인자로 지정해주면 더 좋습니다.

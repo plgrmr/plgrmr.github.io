@@ -45,12 +45,28 @@
 &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devtools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
 &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 제가 만든 패키지를 로드합니다.
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;install_github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;plgrmr/readKor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;install_github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;plgrmr/readKor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;force&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Skipping install of 'readKor' from a github remote, the SHA1 (ab3acabf) has not changed since last install.
-##   Use `force = TRUE` to force installation
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Downloading GitHub repo plgrmr/readKor@master
+## from URL https://api.github.com/repos/plgrmr/readKor/zipball/master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Installing readKor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
+##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
+##   '/private/var/folders/sv/hsvc8m295wv3n7wslkb4b7340000gp/T/RtmpOP9bv9/devtools11a252d345f75/plgrmr-readKor-ab3acab'  \
+##   --library='/Library/Frameworks/R.framework/Versions/3.3/Resources/library'  \
+##   --install-tests
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -356,7 +372,7 @@
 &lt;p&gt;만 하여도 문서를 자연스럽게 열 수 있습니다.&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 14 Dec 2016 18:05:28 +0900</pubDate>
+				<pubDate>Wed, 14 Dec 2016 18:09:11 +0900</pubDate>
 				<link>http://philogrammer.com/2016-12-14/encoding/</link>
 				<guid isPermaLink="true">http://philogrammer.com/2016-12-14/encoding/</guid>
 			</item>
