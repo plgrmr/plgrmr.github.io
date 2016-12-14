@@ -7,6 +7,43 @@ published: true
 tags: [Encoding, Basics]
 ---
 
+## 결론부터
+
+R 공부를 할때 가장 많이 보게되는 에러가 이 두 종류의 에러입니다.
+
+```{r}
+
+read.table("http://philogrammer.com/impeach_euc.txt", sep = "\n")
+
+read.csv("http://philogrammer.com/melon10_euc.csv")
+
+```
+
+이것은 바로 R이 깔린 시스템과 실제 우리가 불러들이려는 파일의 인코딩이 안맞아서 발생하는 문제입니다.
+
+이런경우 문제를 해결하기 위하여 제가 자그마한 패키지를 만들어 보았습니다.
+
+이 패키지를 이용해서 문서를 불러들이면 인코딩 때문에 에러가 나지 않습니다.
+
+```{r}
+
+# Devtools 패키지를 깝니다.
+install.packages("devtools")
+library(devtools)
+
+# 제가 만든 패키지를 로드합니다.
+install_github("plgrmr/readKor")
+library(readKor)
+
+#사용법은 read.table / read.csv 와 유사합니다만 csv 파일인지 txt 파일인지 type 인자로 지정해주면 더 좋습니다.
+readKor("http://philogrammer.com/impeach_euc.txt", type = "txt")
+
+readKor("http://philogrammer.com/melon10_euc.csv", type = "csv")
+
+```
+
+
+
 ## 무엇이 문제인가?
 
 Python 이나 SQL 등 다른 여러 언어 등을 시작할 때 가장 먼저 겪게 되는 문제가 바로 인코딩 문제입니다. 
@@ -80,4 +117,5 @@ read.csv("/r/testdata/budong_utf.csv")
 ```
 
 만 하여도 문서를 자연스럽게 열 수 있습니다.
+
 

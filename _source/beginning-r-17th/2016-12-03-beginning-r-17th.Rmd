@@ -1,0 +1,102 @@
+---
+layout: post
+title:  beginning-r-17th
+date: "`r Sys.time()`"
+published: true
+tags: [example1, example2]
+---
+
+# 로지스틱 회귀 분석
+
+뉴욕주에 대한 2010 ACS 데이터를 사용할 것이다.
+
+```{r}
+
+acs <- read.table("http://jaredlander.com/data/acs_ny.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+
+acs$Income <- with(acs, FamilyIncome >= 150000)
+require(ggplot2)
+require(useful)
+ggplot(acs, aes(x=FamilyIncome)) + 
+  geom_density(fill = "grey", color = "grey") +
+  geom_vline(xintercept = 150000) +
+  scale_x_continuous(label = multiple.dollar, limits = c(0, 1000000))
+
+head(acs)
+
+income1 <- glm(Income ~ HouseCosts + NumWorkers + OwnRent + NumBedrooms + FamilyType, 
+               data = acs, family = binomial(link = "logit"))
+summary(income1)
+
+require(coefplot)
+coefplot(income1)
+
+#팩터화
+str(acs)
+require(Hmisc)
+
+
+
+
+
+summary(acs)
+
+set.seed(696969)
+temp <- sample(1:nrow(acs), replace = FALSE)
+temp
+
+ggplot(acs.testData, aes(x=FamilyIncome)) + 
+  geom_density(fill = "grey", color = "grey") +
+  geom_vline(xintercept = 150000) +
+  scale_x_continuous(label = multiple.dollar, limits = c(0, 1000000))
+
+
+acs <- read.table("http://jaredlander.com/data/acs_ny.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE)
+acs$Income <- with(acs, FamilyIncome >= 150000)
+
+
+acs$HouseCosts <- as.integer(acs$HouseCosts)
+acs$HouseCosts[is.na(acs$HouseCosts)] <- 0
+acs$HouseCosts <- cut2(acs$HouseCosts, g = 10)
+acs$HouseCosts <- as.factor(acs$HouseCosts)
+
+acs$NumWorkers <- as.factor(acs$NumWorkers)
+
+acs$OwnRent <- as.factor(acs$OwnRent)
+
+acs$NumBedrooms <- as.factor(acs$NumBedrooms)
+
+acs$FamilyType <- as.factor(acs$FamilyType)
+
+acs
+acs.testData <- acs[temp[1:100], ]
+acs.testData
+acs.trainingData <- acs[temp[101:22745], ]
+acs.trainingData.TRUE <- acs.trainingData[acs.trainingData$Income == TRUE, ]
+acs.trainingData.FALSE <- acs.trainingData[acs.trainingData$Income == FALSE, ]
+all(acs.trainingData.TRUE$Income == TRUE)
+all(acs.trainingData.FALSE$Income == FALSE)
+
+acs.trainingData.forModelTraining <- rbind(acs.trainingData.TRUE[1:50, ], acs.trainingData.FALSE[1:50, ])
+acs.trainingData.forModelTesting <- rbind(acs.trainingData.TRUE[51:100, ], acs.trainingData.FALSE[51:100, ])
+
+acs.trainingData.forModelTraining.lm <- glm(Income ~ HouseCosts + NumWorkers + OwnRent + NumBedrooms + FamilyType, data = acs.trainingData.forModelTraining, family = binomial(link = "logit"))
+
+summary(acs.trainingData.forModelTraining.lm)
+alias(acs.trainingData.forModelTraining.lm)
+fitted(acs.trainingData.forModelTraining.lm)
+ifelse(fitted(acs.trainingData.forModelTraining.lm) > 0.5, TRUE, FALSE) == acs.trainingData.forModelTraining$Income
+is_correct <- (ifelse(fitted(acs.trainingData.forModelTraining.lm) > 0.5, TRUE, FALSE) == acs.trainingData.forModelTraining$Income)
+sum(is_correct) / NROW(is_correct)
+
+
+
+```
+
+
+
+
+
+
+
+

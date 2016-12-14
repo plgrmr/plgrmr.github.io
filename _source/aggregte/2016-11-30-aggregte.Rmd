@@ -228,6 +228,13 @@ diamondsDT[, list(price = mean(price)), by = cut]
 # 여러 열에 대해 집계하기 위해 list() 로 해당 열을 지정
 diamondsDT[, mean(price), by = list(cut, color)]
 
+#aggregate 와 다르게 각 열에 대해 다른 메트릭이 계산될 수 있다.
+diamondsDT[, list(price = mean(price), carat = mean(carat)), by = cut]
+
+diamondsDT[, list(price = mean(price), carat = mean(carat), caratsum = sum(carat)), by = cut]
+
+#다수의 메트릭에 대한 계산과 다수의 변수에 대한 그룹화는 동시에 가능
+diamondsDT[, list(price = mean(price), carat = mean(carat)), by = list(cut, color)]
 
 
 ```
