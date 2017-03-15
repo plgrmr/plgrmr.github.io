@@ -9,7 +9,7 @@
 				<title>r에서 한글문서 열때 인코딩 문제</title>
         <description>&lt;h2 id=&quot;section&quot;&gt;결론부터&lt;/h2&gt;
 
-&lt;p&gt;R 공부를 시작 할 때 가장 많이 보게되는 에러가 바로 아래와 같은 류의 인코딩 에러입니다.&lt;/p&gt;
+&lt;p&gt;R 공부를 시작하고 나서 한글이 들어있는 자료를 분석할 때, 가장 많이 보게되는 에러가 바로 아래와 인코딩 에러입니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;read.csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://philogrammer.com/melon10_euc.csv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -21,9 +21,9 @@
 
 &lt;p&gt;이것은 바로 R이 설치된 시스템의 인코딩과 실제 우리가 불러들이려는 파일의 인코딩이 맞지 않기 때문에 발생하는 문제입니다.&lt;/p&gt;
 
-&lt;p&gt;빈번히 발생하는 인코딩 에러를 피하기 위하여 read.any 라는 함수를 만들어 보았습니다.&lt;/p&gt;
+&lt;p&gt;우리 팀에서 이런 문제가 발생하여 후배들이 많은 고생을 해서 ㅠㅠ 인코딩 에러를 피하기 위하여 read.any 라는 함수를 만들어 보았습니다.&lt;/p&gt;
 
-&lt;p&gt;가져다 사용하기 쉽도록 패키지화 하여 github 에 올려놓았습니다.&lt;/p&gt;
+&lt;p&gt;함수를 붙여 넣기 귀찮으신 분들을 위하여 아주 단순한 코드이지만, 패키지화 하여 github에 올려놓았습니다. 아래와 같이 하시면 받으실 수 있습니다.&lt;/p&gt;
 
 &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Devtools 패키지를 설치합니다.
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;devtools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -73,7 +73,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;아래의 코드를 복사하여 함수를 가져다가 사용하셔도 무방합니다 :)&lt;/p&gt;
+&lt;p&gt;물론 아래 코드를 복사하여 붙여넣기 해서 함수를 생성해서 사용하셔도 무방합니다 :)&lt;/p&gt;
 
 &lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
@@ -173,7 +173,7 @@ R 은 물론이고 Python 이나 SQL 등 다른 여러 언어 등을 시작할 �
 &lt;/div&gt;
 
 </description>
-				<pubDate>Wed, 15 Mar 2017 17:28:37 +0900</pubDate>
+				<pubDate>Wed, 15 Mar 2017 18:09:25 +0900</pubDate>
 				<link>http://philogrammer.com/2017-03-15/encoding/</link>
 				<guid isPermaLink="true">http://philogrammer.com/2017-03-15/encoding/</guid>
 			</item>
