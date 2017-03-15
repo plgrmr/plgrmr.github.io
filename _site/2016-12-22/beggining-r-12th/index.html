@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-6992908576086638",
+	    enable_page_level_ads: true
+	  });
+	</script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>beggining r 12th</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/social-share-kit.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>beggining r 12th - Philogrammer</title>
+<meta property="og:title" content="beggining r 12th" />
+<meta name="description" content="cbind 와 rbind" />
+<meta property="og:description" content="cbind 와 rbind" />
+<link rel="canonical" href="http://philogrammer.com/2016-12-22/beggining-r-12th/" />
+<meta property="og:url" content="http://philogrammer.com/2016-12-22/beggining-r-12th/" />
+<meta property="og:site_name" content="Philogrammer" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-12-22T13:40:42+09:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "beggining r 12th",
+"datePublished": "2016-12-22T13:40:42+09:00",
+"description": "cbind 와 rbind",
+"url": "http://philogrammer.com/2016-12-22/beggining-r-12th/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87358817-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header>
+  <h1 class="header-small">
+    <a href="http://philogrammer.com">Philogrammer</a>
+  </h1>
+</header>
+<div class="post">
+  <h1 class="post-title">beggining r 12th</h1>
+  <span class="post-date">
+    <time>22 Dec 2016</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://philogrammer.com/tags#example1" class="tag">
+          <span class="term">example1</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://philogrammer.com/tags#example2" class="tag">
+          <span class="term">example2</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <h2 id="cbind--rbind">cbind 와 rbind</h2>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#벡터 세개 생성 후 
+</span><span class="n">sport</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Hockey"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Baseball"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Football"</span><span class="p">)</span><span class="w">
+</span><span class="n">league</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"NHL"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MLB"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NFL"</span><span class="p">)</span><span class="w">
+</span><span class="n">trophy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Stanley Cup"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Commissioner's Trophy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Vince lombardi trophy"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">trophies1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cbind</span><span class="p">(</span><span class="n">sport</span><span class="p">,</span><span class="w"> </span><span class="n">league</span><span class="p">,</span><span class="w"> </span><span class="n">trophy</span><span class="p">)</span><span class="w">
+</span><span class="n">trophies1</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      sport      league trophy                 
+## [1,] "Hockey"   "NHL"  "Stanley Cup"          
+## [2,] "Baseball" "MLB"  "Commissioner's Trophy"
+## [3,] "Football" "NFL"  "Vince lombardi trophy"
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># data.frame() 을 사용하여 data.frame 을 하나 더 만든다
+</span><span class="w">
+</span><span class="n">trophies2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">sport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Baseketball"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Golf"</span><span class="p">),</span><span class="w"> </span><span class="n">league</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"NBA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PGA"</span><span class="p">),</span><span class="w"> </span><span class="n">trophy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Larry trophy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Wanamaker"</span><span class="p">),</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">trophies2</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         sport league       trophy
+## 1 Baseketball    NBA Larry trophy
+## 2        Golf    PGA    Wanamaker
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#rbind를 사용하여 두 data.frame을 결합하고 하나의 data.frame을 생성한다.
+</span><span class="n">trophies</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rbind</span><span class="p">(</span><span class="n">trophies1</span><span class="p">,</span><span class="w"> </span><span class="n">trophies2</span><span class="p">)</span><span class="w">
+</span><span class="n">trophies</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##         sport league                trophy
+## 1      Hockey    NHL           Stanley Cup
+## 2    Baseball    MLB Commissioner's Trophy
+## 3    Football    NFL Vince lombardi trophy
+## 4 Baseketball    NBA          Larry trophy
+## 5        Golf    PGA             Wanamaker
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1">#cbind 에서는 vector에 새로운 열 이름을 지정가능
+</span><span class="n">cbind</span><span class="p">(</span><span class="n">Sport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sport</span><span class="p">,</span><span class="w"> </span><span class="n">Association</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">league</span><span class="p">,</span><span class="w"> </span><span class="n">Prize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trophy</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##      Sport      Association Prize                  
+## [1,] "Hockey"   "NHL"       "Stanley Cup"          
+## [2,] "Baseball" "MLB"       "Commissioner's Trophy"
+## [3,] "Football" "NFL"       "Vince lombardi trophy"
+</code></pre>
+</div>
+
+<h2 id="join">조인(join)</h2>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">download.file</span><span class="p">(</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://jaredlander.com/data/US_Foreign_Aid.zip"</span><span class="p">,</span><span class="w"> </span><span class="n">destfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ForeignAid.zip"</span><span class="p">)</span><span class="w">
+</span><span class="n">unzip</span><span class="p">(</span><span class="s2">"ForeignAid.zip"</span><span class="p">)</span><span class="w">
+</span><span class="n">require</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Loading required package: stringr
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">theFiles</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dir</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"nn.csv"</span><span class="p">)</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">theFiles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  
+  </span><span class="c1">#데이터 할당할 이름을 생성한다.
+</span><span class="w">  </span><span class="n">nameToUse</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">str_sub</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">18</span><span class="p">)</span><span class="w">
+  </span><span class="c1">#read.table을 사용하여 csv를 읽는다.
+</span><span class="w">  </span><span class="c1">#file.path 는 폴더와 파일명을 명시하는 편리한 방법이다.
+</span><span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file.path</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">),</span><span class="w">
+                     </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+  </span><span class="c1">#생성 객체를 작업공간에 할당한다.
+</span><span class="w">  </span><span class="n">assign</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nameToUse</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w">
+  
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="merge">Merge</h2>
+
+<p>R은 두 data.frame 을 결합하기 위해 merge 라는 내장함수를 가지고 있다.</p>
+
+
+
+
+  <!-- Share -->
+  
+  <div class="post-share">
+    <hr>
+    <span>Share this: <br /></span>
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2016-12-22/beggining-r-12th/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
+<a href="https://twitter.com/intent/tweet?text=beggining r 12th&url=http://philogrammer.com/2016-12-22/beggining-r-12th/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2016-12-22/beggining-r-12th/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2016-12-22/beggining-r-12th/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
+<a href="mailto:?subject=beggining r 12th&amp;body=Check out this site http://philogrammer.com/2016-12-22/beggining-r-12th/" class="ssk ssk-icon ssk-email"></a>
+
+    <hr>
+  </div>
+  
+
+  <!-- Disqus -->
+  
+  <section id="disqus_thread"></section>
+  <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//philogrammer.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+	<hr />
+	<div class="footer-link">
+		
+		<a href="https://www.facebook.com/philogrammer"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://twitter.com/philogrammer"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://github.com/plgrmr"><i class="fa fa-github" aria-hidden="true"></i></a>
+		
+
+		
+
+		
+
+		
+
+		
+		<a href="mailto:philogrammer@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		
+
+	</div>
+	© 2016 philogrammer. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>
