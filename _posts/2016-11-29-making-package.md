@@ -2,7 +2,7 @@
 title: "패키지 만들기"
 author: "JuyoungMaeng"
 date: '2016-11-29'
-published: true
+published: false
 ---
 
 
