@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-6992908576086638",
+	    enable_page_level_ads: true
+	  });
+	</script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>flask</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/social-share-kit.css" type="text/css">
+
+  <!-- Font -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Philogrammer" href="/feed.xml" />
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>flask - Philogrammer</title>
+<meta property="og:title" content="flask" />
+<meta name="description" content="Amazon AWS 에 ec2 계정을 만듭니다." />
+<meta property="og:description" content="Amazon AWS 에 ec2 계정을 만듭니다." />
+<link rel="canonical" href="http://philogrammer.com/2017-04-01/flask/" />
+<meta property="og:url" content="http://philogrammer.com/2017-04-01/flask/" />
+<meta property="og:site_name" content="Philogrammer" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-04-01T14:43:46+09:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "flask",
+"datePublished": "2017-04-01T14:43:46+09:00",
+"description": "Amazon AWS 에 ec2 계정을 만듭니다.",
+"url": "http://philogrammer.com/2017-04-01/flask/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+
+  <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87358817-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+
+<body>
+  <div class="content-container">
+    <header>
+  <h1 class="header-small">
+    <a href="http://philogrammer.com">Philogrammer</a>
+  </h1>
+</header>
+<div class="post">
+  <h1 class="post-title">flask</h1>
+  <span class="post-date">
+    <time>01 Apr 2017</time>
+  </span>
+  <div class="post-tag">
+    <ul>
+      
+      <li>
+        <a href="http://philogrammer.com/tags#example1" class="tag">
+          <span class="term">example1</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="http://philogrammer.com/tags#example2" class="tag">
+          <span class="term">example2</span>
+        </a>
+      </li>
+      
+      
+    </ul>
+  </div>
+
+  <p>Amazon AWS 에 ec2 계정을 만듭니다.</p>
+
+<p>Ubuntu 16.04 환경을 만든 후</p>
+
+<p>터미널에서 접속합니다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+ssh -v -i /Key/amazon.pem ubuntu@13.124.106.46
+
+</code></pre>
+</div>
+
+<p>아무것도 안깔려있는 상태이기 때문에</p>
+
+<p>파이선과 플라스크 그리고 웹 배포를 위한 apache, wsgi 를 설치합니다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+sudo apt-get install libapache2-mod-wsgi python-dev
+sudo pip install flask
+sudo apt-get install python-pip
+
+</code></pre>
+</div>
+
+<p>샘플로 플라스크 앱을 만들어 봅니다.</p>
+
+<p>/var/www/ 폴터에 Flask 라는 폴더를 새로 만들고</p>
+
+<p>그 안에 샘플 코드를 넣습니다.</p>
+
+<p>필수적인 샘플 코드는 다음과 같습니다.</p>
+
+<h4 id="flaskappwsgi">Flaskapp.wsgi</h4>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+<span class="c">#!/usr/bin/python</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">"/var/www/Flask/"</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">Flask</span> <span class="kn">import</span> <span class="n">app</span> <span class="k">as</span> <span class="n">application</span>
+<span class="n">application</span><span class="o">.</span><span class="n">secret_key</span> <span class="o">=</span> <span class="s">'mysecret'</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Traceback (most recent call last):
+##   File "&lt;string&gt;", line 8, in &lt;module&gt;
+## ImportError: No module named Flask
+</code></pre>
+</div>
+
+<h4 id="initpy"><strong>init</strong>.py</h4>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"Hello, Welcome to Lopes!"</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    
+    
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">'/input/&lt;input_str&gt;'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">count_me</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">input_str</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Traceback (most recent call last):
+##   File "&lt;string&gt;", line 2, in &lt;module&gt;
+## ImportError: No module named flask
+</code></pre>
+</div>
+
+<p>웹서버에 배포하려면</p>
+
+<p>host 설정과, apache wsgi 설정을 반영해야 합니다.</p>
+
+<p>/etc/hosts</p>
+
+<p>/etc/apache2/sites-available</p>
+
+<p>에 들어가 default 파일을 수정해줍니다.</p>
+
+<h4 id="etchosts">/etc/hosts</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+13.124.106.46	FlaskApp
+
+
+</code></pre>
+</div>
+
+<h4 id="etcapache2sites-available000-defaultconf">/etc/apache2/sites-available/000-default.conf</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;VirtualHost *:80&gt;
+        ServerName FlaskApp
+        ServerAdmin admin@yourdomain.com
+        WSGIScriptAlias / /var/www/Flask/flaskapp.wsgi
+        &lt;Directory /var/www/Flask/Flask/&gt;
+            Order allow,deny
+            Allow from all
+        &lt;/Directory&gt;
+        Alias /static /var/www/Flask/Flask/static
+        &lt;Directory /var/www/Flask/Flask/static/&gt;
+            Order allow,deny
+            Allow from all
+        &lt;/Directory&gt;
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+
+</code></pre>
+</div>
+
+<p>설정 완료 후</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+sudo /etc/init.d/apache2 reload
+
+</code></pre>
+</div>
+
+<p>를 입력하여 서버를 재시작 하면 배포가 완료됩니다.</p>
+
+<h2 id="section">사이트 사용법</h2>
+
+<p>샘플 주소</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://13.124.106.46/
+</code></pre>
+</div>
+
+<p>를 입력하면 인삿말이 출력되며</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://13.124.106.46/input/
+
+http://13.124.106.46/input/philogrammer.com
+
+</code></pre>
+</div>
+
+<p>뒤에 사이트 주소를 입력하면 사이트 주소가 출력 됩니다.</p>
+
+
+
+
+  <!-- Share -->
+  
+  <div class="post-share">
+    <hr>
+    <span>Share this: <br /></span>
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://philogrammer.com/2017-04-01/flask/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-facebook"></a>
+<a href="https://twitter.com/intent/tweet?text=flask&url=http://philogrammer.com/2017-04-01/flask/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-twitter"></a>
+<a href="https://plus.google.com/share?url=http://philogrammer.com/2017-04-01/flask/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-google-plus"></a>
+<a href="https://www.tumblr.com/share?url=http://philogrammer.com/2017-04-01/flask/" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" class="ssk ssk-icon ssk-tumblr"></a>
+<a href="mailto:?subject=flask&amp;body=Check out this site http://philogrammer.com/2017-04-01/flask/" class="ssk ssk-icon ssk-email"></a>
+
+    <hr>
+  </div>
+  
+
+  <!-- Disqus -->
+  
+  <section id="disqus_thread"></section>
+  <script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//philogrammer.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+</div>
+
+
+    <!-- Documents about icons are here: http://fontawesome.io/icons/ -->
+<div class="footer">
+	<hr />
+	<div class="footer-link">
+		
+		<a href="https://www.facebook.com/philogrammer"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://twitter.com/philogrammer"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		
+
+		
+		<a href="https://github.com/plgrmr"><i class="fa fa-github" aria-hidden="true"></i></a>
+		
+
+		
+
+		
+
+		
+
+		
+		<a href="mailto:philogrammer@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+		
+
+	</div>
+	© 2016 philogrammer. All rights reserved.
+</div>
+
+  </div>
+</body>
+</html>

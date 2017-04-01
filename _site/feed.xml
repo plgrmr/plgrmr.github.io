@@ -6,6 +6,164 @@
 		<atom:link href="http://philogrammer.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>flask</title>
+        <description>&lt;p&gt;Amazon AWS 에 ec2 계정을 만듭니다.&lt;/p&gt;
+
+&lt;p&gt;Ubuntu 16.04 환경을 만든 후&lt;/p&gt;
+
+&lt;p&gt;터미널에서 접속합니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+ssh -v -i /Key/amazon.pem ubuntu@13.124.106.46
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;아무것도 안깔려있는 상태이기 때문에&lt;/p&gt;
+
+&lt;p&gt;파이선과 플라스크 그리고 웹 배포를 위한 apache, wsgi 를 설치합니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+sudo apt-get install libapache2-mod-wsgi python-dev
+sudo pip install flask
+sudo apt-get install python-pip
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;샘플로 플라스크 앱을 만들어 봅니다.&lt;/p&gt;
+
+&lt;p&gt;/var/www/ 폴터에 Flask 라는 폴더를 새로 만들고&lt;/p&gt;
+
+&lt;p&gt;그 안에 샘플 코드를 넣습니다.&lt;/p&gt;
+
+&lt;p&gt;필수적인 샘플 코드는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;flaskappwsgi&quot;&gt;Flaskapp.wsgi&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;logging&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;logging&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;basicConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/var/www/Flask/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secret_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'mysecret'&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Traceback (most recent call last):
+##   File &quot;&amp;lt;string&amp;gt;&quot;, line 8, in &amp;lt;module&amp;gt;
+## ImportError: No module named Flask
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;initpy&quot;&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello, Welcome to Lopes!&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    
+    
+
+&lt;span class=&quot;nd&quot;&gt;@app.route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/input/&amp;lt;input_str&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;count_me&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_str&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Traceback (most recent call last):
+##   File &quot;&amp;lt;string&amp;gt;&quot;, line 2, in &amp;lt;module&amp;gt;
+## ImportError: No module named flask
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;웹서버에 배포하려면&lt;/p&gt;
+
+&lt;p&gt;host 설정과, apache wsgi 설정을 반영해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;/etc/hosts&lt;/p&gt;
+
+&lt;p&gt;/etc/apache2/sites-available&lt;/p&gt;
+
+&lt;p&gt;에 들어가 default 파일을 수정해줍니다.&lt;/p&gt;
+
+&lt;h4 id=&quot;etchosts&quot;&gt;/etc/hosts&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+13.124.106.46	FlaskApp
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;etcapache2sites-available000-defaultconf&quot;&gt;/etc/apache2/sites-available/000-default.conf&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+        ServerName FlaskApp
+        ServerAdmin admin@yourdomain.com
+        WSGIScriptAlias / /var/www/Flask/flaskapp.wsgi
+        &amp;lt;Directory /var/www/Flask/Flask/&amp;gt;
+            Order allow,deny
+            Allow from all
+        &amp;lt;/Directory&amp;gt;
+        Alias /static /var/www/Flask/Flask/static
+        &amp;lt;Directory /var/www/Flask/Flask/static/&amp;gt;
+            Order allow,deny
+            Allow from all
+        &amp;lt;/Directory&amp;gt;
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;설정 완료 후&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+sudo /etc/init.d/apache2 reload
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;를 입력하여 서버를 재시작 하면 배포가 완료됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;사이트 사용법&lt;/h2&gt;
+
+&lt;p&gt;샘플 주소&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://13.124.106.46/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;를 입력하면 인삿말이 출력되며&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://13.124.106.46/input/
+
+http://13.124.106.46/input/philogrammer.com
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;뒤에 사이트 주소를 입력하면 사이트 주소가 출력 됩니다.&lt;/p&gt;
+
+</description>
+				<pubDate>Sat, 01 Apr 2017 14:43:46 +0900</pubDate>
+				<link>http://philogrammer.com/2017-04-01/flask/</link>
+				<guid isPermaLink="true">http://philogrammer.com/2017-04-01/flask/</guid>
+			</item>
+		
+			<item>
 				<title>r에서 한글문서 열때 인코딩 문제</title>
         <description>&lt;h2 id=&quot;section&quot;&gt;결론부터&lt;/h2&gt;
 
